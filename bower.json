@@ -1,0 +1,22 @@
+{
+    "name": "f5-static-html-skeleton",
+    "version": "1.0.0",
+    "homepage": "https://github.com/xxx/",
+    "authors": [
+        "George Bardis @bardius george@bardis.info"
+    ],
+    "description": "A static HTML website with Foundation 5 project skeleton",
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery": ">1.11.2",
+        "foundation": "~5.5.0"
+    }
+}

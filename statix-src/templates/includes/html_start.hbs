@@ -1,0 +1,76 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en-GB"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en-GB"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+
+        <title>{{ page.title }} | {{ page.siteName }}</title>
+        <meta name="description" content="{{ page.meta_description }} {{ page.siteName }}">
+        <meta name="keywords" content="{{ page.meta_keywords }}">
+
+        <link rel="alternate" hreflang="en" href="{{ page.siteURL }}{{ page.pageURL }}" />
+        <link rel="canonical" href="{{ page.siteURL }}{{ page.pageURL }}" />
+        
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+        <meta name="mobile-web-app-capable" content="yes">
+
+        <link rel="shortcut icon" href="/images/favicons/favicon.ico">
+        
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+        
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-196x196.png" sizes="196x196">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+        
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/images/favicons/mstile-144x144.png">
+        <meta name="msapplication-config" content="/images/favicons/browserconfig.xml">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="/css/styles.css">
+
+        <script src="/js/release/modernizr.min.js"></script>
+
+        <!--[if !IE]><!-->
+        <script>
+            if (/*@cc_on!@*/false) {
+                document.documentElement.className += ' is-ie';
+            }
+        </script>
+        <!--<![endif]-->
+
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+        <script src="//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+        <script src="/js/libs/polyfills/rem.min.js"></script>
+        <![endif]-->
+
+        <!-- Twitter Cards -->
+        <meta name="twitter:site" content="@{{ page.twitter_user }}" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{{ page.title }} | {{ page.siteName }}" />
+        <meta name="twitter:description" content="{{ page.twitter_description }}" />
+        <meta name="twitter:image:src" content="{{ page.siteURL }}/images/favicons/logo_media.jpg" />
+
+        <!-- Facebook Opengraph -->
+        <meta property="og:title" content="{{ page.title }} | {{ page.siteName }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ page.siteURL }}" />
+        <meta property="og:image" content="{{ page.siteURL }}/images/favicons/logo_media.jpg" />
+        <meta property="og:description" content="{{ page.fb_description }}" />
+
+    </head>

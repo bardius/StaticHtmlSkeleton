@@ -1,0 +1,8 @@
+###
+# Site variables
+###
+
+production: <%= production %>
+
+src: ./statix-src
+destination: ./public_html
