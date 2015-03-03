@@ -70,6 +70,10 @@ module.exports = function (grunt) {
                 // <%= config.host.url %>
                 url: 'http://localhost:8000/public_html'
             },
+            jstests: {
+                // <%= config.jstests.path %>
+                path: 'public_html/js/tests'
+            },
             statix: {
                 path: 'public_html'
             }
@@ -112,7 +116,7 @@ module.exports = function (grunt) {
             release: {
                 options: {
                     loadPath: [
-                        '<%= config.f5scss.path %>',
+                        '<%= config.f5scss.path %>'
                     ],
                     unixNewlines: true,
                     style: 'expanded', //compressed - expanded
@@ -310,6 +314,22 @@ module.exports = function (grunt) {
          */
         clean: {
             all: ['<%= config.statix.path %>/**/*.html']
+        },
+        /**
+         * Jasmine
+         * Run Jasmine unit tests
+         */
+        jasmine: {
+            tests: {
+              src: '<%=config.js.releaseDir%>/*.js',
+                options: {                    
+                    vendor: [
+                      'public_html/bower_components/jquery/dist/jquery.js',
+                      'public_html/bower_components/jasmine-jquery/lib/jasmine-jquery.js'
+                    ],
+                    specs: '<%= config.jstests.path %>/*.spec.js'
+                }
+            }
         },
         /**
          * Bower install

@@ -62,4 +62,12 @@
         }
     };
 
+    BARDIS.sampleTest = {
+        simpleTest: function (projectName) {
+            this.projectName = projectName;
+
+            return this.projectName + ' is starting. Welcome!';
+        }
+    };
+
 })(window.BARDIS = window.BARDIS || {}, jQuery, window, document);
