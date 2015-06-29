@@ -10,10 +10,10 @@
         }],
     "repository": {
         "type": "git",
-        "url": "git://github.com/xxx"
+        "url": "git://github.com/bardius/StaticHtmlSkeleton"
     },
     "bugs": {
-        "url": "https://github.com/xxx/issues"
+        "url": "https://github.com/bardius/StaticHtmlSkeleton/issues"
     },
     "license": "MIT",
     "engines": {
@@ -23,12 +23,12 @@
     "devDependencies": {
         "grunt": "~0.4.5",
         "grunt-contrib-sass": "~0.9.2",
-        "grunt-contrib-jshint": "~0.11.0",
+        "grunt-contrib-jshint": "~0.11.2",
         "grunt-contrib-watch": "~0.6.1",
-        "grunt-contrib-uglify": "~0.8.0",
+        "grunt-contrib-uglify": "~0.9.1",
         "grunt-csso": "~0.7.0",
-        "load-grunt-tasks": "~3.0.0",
-        "grunt-jscs": "~1.5.0",
+        "load-grunt-tasks": "~3.2.0",
+        "grunt-jscs": "~1.8.0",
         "grunt-autoprefixer": "~2.2.0",
         "grunt-composer": "~0.4.1",
         "grunt-bower-task": "~0.4.0",
@@ -37,10 +37,10 @@
         "assemble": "~0.4.42",
         "grunt-contrib-clean": "~0.6.0",
         "grunt-contrib-copy": "~0.7.0",
-        "grunt-newer": "~1.1.0",
+        "grunt-newer": "~1.1.1",
         "grunt-notify": "~0.4.0",
         "grunt-csssplit": "~0.2.1",
-        "grunt-combine-mq": "~0.6.0",
+        "grunt-combine-mq": "~0.9.0",
         "grunt-contrib-jasmine": "~0.8.2"
     },
     "keywords": [],
