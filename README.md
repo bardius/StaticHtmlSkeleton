@@ -1,6 +1,6 @@
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
-[![Dependency Status](https://www.versioneye.com/user/projects/54d02ce93ca0849531000074/badge.png)](https://www.versioneye.com/user/projects/54d02ce93ca0849531000074)
-[![Dependency Status](https://www.versioneye.com/user/projects/54d02d563ca0840b19000038/badge.png)](https://www.versioneye.com/user/projects/54d02d563ca0840b19000038)
+[![Dependency Status](https://www.versioneye.com/user/projects/5593bc066238390015000034/badge.png)](https://www.versioneye.com/user/projects/5593bc066238390015000034)
+[![Dependency Status](https://www.versioneye.com/user/projects/5593bc5d6238390018000023/badge.png)](https://www.versioneye.com/user/projects/5593bc5d6238390018000023)
 
 Static HTML Project Skeleton Grunt Build with integrated Zurb Foundation 5
 ============================================================================
