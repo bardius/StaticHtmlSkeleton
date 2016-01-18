@@ -27,7 +27,5 @@ Thumbs.db
 nbproject/
 node_modules/
 npm-debug.log
-
-
-
-
+*.iml
+.idea/

@@ -45,9 +45,9 @@
 
         <!--[if !IE]><!-->
         <script>
-            if (/*@cc_on!@*/false) {
-                document.documentElement.className += ' is-ie';
-            }
+            if("ActiveXObject" in window){ document.documentElement.className += ' is-ie'; }
+            if (/*@cc_on!@*/false) { document.documentElement.className += ' is-ie10'; }
+            if(!(window.ActiveXObject) && "ActiveXObject" in window){ document.documentElement.className += ' is-ie11'; }
         </script>
         <!--<![endif]-->
 
@@ -74,6 +74,7 @@
         <meta property="og:description" content="" />
 
     </head>
+
 
     <body>
         <!-- Add your site or application content here -->
