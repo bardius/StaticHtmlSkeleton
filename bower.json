@@ -1,13 +1,13 @@
 {
     "name": "f5-static-html-skeleton",
-    "version": "1.0.0",
-    "homepage": "https://github.com/xxx/",
+    "version": "2.0.0",
+    "homepage": "https://github.com/bardius/StaticHtmlSkeleton",
     "authors": [
         "George Bardis @bardius george@bardis.info"
     ],
-    "description": "A static HTML website with Foundation 5 project skeleton",
+    "description": "A static website generator with integrated Zurb Foundation 6",
     "license": "MIT",
-    "private": true,
+    "private": false,
     "ignore": [
         "**/.*",
         "node_modules",
@@ -16,8 +16,12 @@
         "tests"
     ],
     "dependencies": {
-        "jquery": ">1.11.2",
+        "foundation-sites": "~6.2.3",
+        "motion-ui": "~1.2.2",
+        "jquery": "~2.2.4",
+        "jquery-ias": "~2.2.1",
         "jasmine-jquery": "~2.1.0",
-        "foundation": "~5.5.2"
+        "foundation-datepicker": "~1.5.0",
+        "es5-shim": "~4.5.9"
     }
 }

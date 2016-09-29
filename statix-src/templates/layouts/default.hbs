@@ -1,22 +1,29 @@
 {{> html_start }}
 
     <body>
-        <!-- Add your site or application content here -->
-        <div class="superWrapper">
-            <div class="wrapper">
-                <div class="off-canvas-wrap" data-offcanvas="">
-                    <div class="inner-wrap">
+        <div class="super-wrapper">
+            <div id="wrapper" class="wrapper">
 
-                    {{> masthead }}
-                
-                    {{> body }}
+                <div class="off-canvas-wrapper">
+                    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 
-                    {{> footer }}
-                    
-                    <a href="#" class="exit-off-canvas"></a>
-                </div>  
+                        <div class="off-canvas-content" data-off-canvas-content>
+
+                            <!-- Add your site or application content here -->
+                            {{> masthead }}
+
+                            {{> body }}
+
+                            {{> footer }}
+
+                        </div>
+
+                        {{> off_canvas_nav }}
+
+                    </div>
+                </div>
+
             </div>
-        </div>  
-    </div>
+        </div>
 
 {{> html_end }}

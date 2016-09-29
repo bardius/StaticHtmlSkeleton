@@ -3,15 +3,17 @@
 // ------------------------------
 
 module.exports = function (grunt) {
-
-    'use strict';
+    var path = require('path');
 
     // Project configuration
     var options = {
+        // path to task.js files, defaults to grunt dir
+        configPath: path.join(process.cwd(), 'ui-src/grunt'),
+        // auto grunt.initConfig
         init: true,
+        // data passed into config.
         data: {
             pkg: grunt.file.readJSON('package.json'),
-            site: grunt.file.readYAML('statix-src/data/site.yml'),
             releaseVersion: grunt.option('releaseVersion') || '',
             config: {
                 /**
@@ -20,33 +22,76 @@ module.exports = function (grunt) {
                  * Choose javascript release filename
                  * Choose javascript release location
                  * Choose javascript files to be uglified
+                 * Choose images location
+                 * Choose css release location
+                 * Choose scss files to be compiled
+                 * Choose foundation scss location
+                 * Choose bower components location
                  */
                 js: {
                     // <%=config.js.releaseDir%>
-                    releaseDir: 'public_html/js/release/',
+                    releaseDir: 'public_html/js/',
                     // <%=config.js.releaseFile%>
                     releaseFile: 'scripts.min.js',
-                    // <%=config.js.modernizrReleaseFile%>
-                    modernizrReleaseFile: 'modernizr.min.js',
                     // <%=config.js.scriptFileList%>
                     scriptFileList: [
-                        'public_html/bower_components/jquery/dist/jquery.js',
-                        // Include only used Foundation 5 scripts if needed instead of the minified full framework ones
-                        'public_html/bower_components/foundation/js/foundation.js',
-                        //'public_html/bower_components/foundation/js/foundation.js',
-                        //'public_html/bower_components/foundation/js/foundation/*.js',
-                        'public_html/js/helpers/environment.js',
-                        'public_html/js/helpers/supports.js',
-                        'public_html/js/helpers/console.js',
-                        'public_html/js/helpers/limit.js',
-                        'public_html/js/helpers/notification-dispatcher.js',
-                        'public_html/js/helpers/smartResize.js',
-                        'public_html/js/libs/mobile/normalized.addressbar.js',
-                        'public_html/js/script.js'
-                    ],
-                    // <%=config.js.modernizrScriptFile%>
-                    modernizrScriptFile: [
-                        'public_html/bower_components/modernizr/modernizr.js'
+                        // ES5 Shims for legacy browsers
+                        //'ui-src/bower_components/es5-shim/es5-shim.js',
+                        //'ui-src/bower_components/es5-shim/es5-sham.js',
+
+                        // Libraries required by Foundation
+                        'ui-src/bower_components/jquery/dist/jquery.js',
+                        'ui-src/bower_components/what-input/what-input.js',
+
+                        // Include full Foundation 6 scripts
+                        'ui-src/bower_components/foundation-sites/dist/foundation.js',
+                        'ui-src/bower_components/foundation-datepicker/js/foundation-datepicker.js',
+
+                        // Core Foundation files
+                        //"ui-src/bower_components/foundation-sites/js/foundation.core.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.util.*.js",
+
+                        // Individual Foundation components
+                        // If you aren't using a component, just remove it from the list,
+                        //"ui-src/bower_components/foundation-sites/js/foundation.abide.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.accordion.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.accordionMenu.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.drilldown.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.dropdown.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.dropdownMenu.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.equalizer.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.interchange.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.magellan.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.offcanvas.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.orbit.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.responsiveMenu.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.responsiveToggle.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.reveal.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.slider.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.sticky.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.tabs.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.toggler.js",
+                        //"ui-src/bower_components/foundation-sites/js/foundation.tooltip.js",
+
+                        // Include helper scripts
+                        'ui-src/js/helpers/console.js',
+                        'ui-src/js/helpers/environment.js',
+                        'ui-src/js/helpers/notification-dispatcher.js',
+                        'ui-src/js/helpers/supports.js',
+                        'ui-src/js/helpers/cookies.js',
+
+                        // Include infinite scroller pagination scripts
+                        //'ui-src/bower_components/jquery-ias/src/jquery-ias.js',
+                        //'ui-src/bower_components/jquery-ias/src/callbacks.js',
+                        //'ui-src/bower_components/jquery-ias/src/extension/spinner.js',
+                        //'ui-src/bower_components/jquery-ias/src/extension/noneleft.js',
+
+                        // Include custom jQuery plugin scripts
+                        //'ui-src/js/sample_plugin.js',
+
+                        // Main JavaScript application bootstrap file
+                        'ui-src/js/cookiePolicy.js',
+                        'ui-src/js/scripts.js'
                     ]
                 },
                 img: {
@@ -59,15 +104,19 @@ module.exports = function (grunt) {
                 },
                 scss: {
                     // <%= config.scss.path %>
-                    path: 'public_html/scss'
+                    path: 'ui-src/scss'
                 },
-                f5scss: {
-                    // <%= config.f5scss.path %>
-                    path: 'public_html/bower_components/foundation/scss'
+                f6scss: {
+                    // <%= config.f6scss.path %>
+                    path: 'ui-src/bower_components/foundation-sites/scss'
                 },
-                bower: {
-                    // <%= config.bower.path %>
-                    path: './public_html/bower_components'
+                motionUIscss: {
+                    // <%= config.motionUIscss.path %>
+                    path: 'ui-src/bower_components/motion-ui/src'
+                },
+                jstests: {
+                    // <%= config.jstests.path %>
+                    path: 'ui-src/js/tests'
                 },
                 host: {
                     // <%= config.host.url %>
@@ -77,9 +126,18 @@ module.exports = function (grunt) {
                     // <%= config.host.port %>
                     port: '8000'
                 },
-                jstests: {
-                    // <%= config.jstests.path %>
-                    path: 'public_html/js/tests'
+                // <%= config.site %>
+                site: {
+                    src: './statix-src',
+                    dest: './public_html'
+                },
+                hbs: {
+                    // <%= config.hbs.path %>
+                    path: 'statix-src/templates'
+                },
+                gruntTasks:{
+                    // <%= config.gruntTasks.path %>
+                    path: 'ui-src/grunt'
                 },
                 statix: {
                     // <%= config.statix.path %>
@@ -97,28 +155,25 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.loadNpmTasks('assemble');
 
-
-    /* ==========================================================================
+    /* ==========================================================================================
      Available tasks:
 
-     * grunt : run jshint, uglify and sass
-     * grunt watch : run sass, autoprefixer, csssplit, uglify
-     * grunt dev : run sass, autoprefixer, csssplit, uglify
-     * grunt jsdev : run jshint, uglify
-     * grunt deploy : run sass, autoprefixer, combine_mq, csssplit, csso, uglify
-     * grunt setup :  run bower install, uglify and sass
-     * grunt serve  : watch js & scss and run a local server
-     * grunt generate  : run assemble, uglify and sass
-     * grunt travis :  run bower install, uglify and sass
-     * grunt jasmine :  run bower install, uglify and sass
-     ========================================================================== */
+     * grunt :                      run scsslint, sass, autoprefixer, eslint, concat, babel
+     * grunt jsdev :                run eslint, concat, babel
+     * grunt dev :                  run scsslint, sass, autoprefixer, eslint, concat, babel
+     * grunt release :              run scsslint, sass, autoprefixer, csso, concat, babel, uglify
+     * grunt runtests :             run jasmine
+     * grunt serve :                watch js & scss and run a local server
+     * grunt generate :             run assemble, uglify and sass
+     * grunt travis :               run scsslint, sass, autoprefixer, csso, concat, babel, uglify
+     ============================================================================================ */
 
     /**
      * GRUNT
      * Default task
-     * run sass, autoprefixer, csssplit, uglify
+     * run sass, autoprefixer, eslint, concat, babel
      */
-    // Default task
+        // Default task
     grunt.registerTask('default', [
         'dev'
     ]);
@@ -126,51 +181,63 @@ module.exports = function (grunt) {
 
     /**
      * GRUNT JSDEV
-     * A task for development
-     * run sass, autoprefixer, csssplit, uglify
+     * A task for JavaScript development
+     * run eslint, concat, babel
      */
     grunt.registerTask('jsdev', [
-        //'jshint',
-        'uglify:release'
+        'eslint',
+        'concat:js',
+        'babel'
     ]);
 
 
     /**
      * GRUNT DEV
      * A task for development
-     * run sass, autoprefixer, csssplit, uglify
+     * run sass, autoprefixer, eslint, concat, babel
      */
     grunt.registerTask('dev', [
         'jsdev',
-        'sass:release',
-        'postcss:release',
-        'csssplit:release'
+        'scsslint',
+        'sass:dev',
+        'autoprefixer:release'
     ]);
 
 
     /**
-     * GRUNT DEPLOY
+     * GRUNT RELEASE
      * A task for your production environment
-     * run sass, autoprefixer, combine_mq, csssplit, csso, uglify
+     * run sass, autoprefixer, csso, concat, uglify
      */
-    grunt.registerTask('deploy', [
-        'uglify:production',
-        'sass:production',
-        'postcss:release',
-        'combine_mq:release',
-        'csssplit:release',
+    grunt.registerTask('release', [
+        'eslint',
+        'concat:js',
+        'babel',
+        'uglify:release',
+        'scsslint',
+        'sass:release',
+        'autoprefixer:release',
         'csso:release'
     ]);
 
 
     /**
-     * GRUNT SETUP
-     * A task for downloading dependencies and initial build run
-     * run bower install, sass, autoprefixer, csssplit, uglify
+     * GRUNT RUNTESTS
+     * A task for testing
+     * run jasmine
      */
-    grunt.registerTask('setup', [
-        'bower:install',
-        'dev'
+    grunt.registerTask('runtests', [
+        'jasmine'
+    ]);
+
+
+    /**
+     * GRUNT TRAVIS
+     * A task for Travis CI to test build
+     * run sass, autoprefixer, csso, concat, uglify
+     */
+    grunt.registerTask('travis', [
+        'release'
     ]);
 
 
@@ -194,15 +261,5 @@ module.exports = function (grunt) {
         'generate',
         'connect',
         'watch'
-    ]);
-
-
-    /**
-     * GRUNT TRAVIS
-     * A task for Travis CI to test build
-     * run sass, autoprefixer, combine_mq, csssplit, csso, uglify
-     */
-    grunt.registerTask('travis', [
-        'deploy'
     ]);
 };

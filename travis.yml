@@ -2,23 +2,19 @@
 language: node_js
 
 node_js:
-  - 0.8
-  - 0.10
-  - 0.12
+  - 4.4
+  - 4.6
 
 matrix:
     allow_failures:
-        - node_js: 0.8
 
 before_install:
-  - gem install sass
-  - npm install -g grunt-cli
-  - npm install -g grunt
-  - npm install -g bower
+  - node --version
+  - npm -v
+  - npm install -g grunt-cli bower
 
 before_script:
-  - npm install
-  - bower install
+  - npm run setup
 
 script:
   - grunt travis

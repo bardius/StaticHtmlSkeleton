@@ -1,0 +1,42 @@
+<!--  ======================  -->
+<!--  === Off Canvas Nav ===  -->
+<!--  ======================  -->
+<aside class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+    <!-- Menu -->
+    <ul class="vertical dropdown menu off-canvas-list" data-responsive-menu="drilldown large-dropdown">
+        <li {{#is basename "index"}} class="active"{{/is}}>
+            <a href="/index.html" title="Home">
+                <span>Home</span>
+            </a>
+        </li>
+        <li {{#is basename "styleguide"}} class="active"{{/is}}>
+            <a href="/styleguide.html" title="Styleguide">
+                <span>Styleguide</span>
+            </a>
+        </li>
+        <li class="has-submenu">
+            <a href="/sample1.html" title="Sample Page 1">
+                <span>Sample Page 1</span>
+            </a>
+            <ul class="menu submenu vertical" data-submenu>
+                <li>
+                    <a href="/sample2.html" title="Sample Page 2">
+                        <span>Sample Page 2</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sample3.html" title="Sample Page 3">
+                        <span>Sample Page 3</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- Close button -->
+        <li>
+            <a class="exit-off-canvas" href="#" title="Close Menu" data-close>
+                <span><i class="fi-x"></i> Close Menu</span>
+            </a>
+        </li>
+    </ul>
+
+</aside>

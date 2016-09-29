@@ -10,6 +10,6 @@
 # TECHNOLOGY COLOPHON
 
     CSS3, HTML5
-    Apache Server Configs, jQuery, Modernizr
+    Apache Server Configs, jQuery
     Zurb Foundation
-    Grunt, Bower
+    Grunt, Bower, Babel
