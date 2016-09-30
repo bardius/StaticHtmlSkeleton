@@ -5,10 +5,17 @@
 //
 // Includes handlebars helpers for extra functionality
 // http://assemble.io/helpers
+//
+// Includes assemble sitemap to generate sitemap.xml
+// https://github.com/assemble/grunt-assemble-sitemap
 // -----------------------------
 
 module.exports = {
     options: {
+        date: new Date(),
+        releaseVersion: '<%=releaseVersion%>',
+        cssFilePath: '/css/<%=config.css.releaseFile%>',
+        jsFilePath: '/js/<%=config.js.releaseFile%>',
         data: '<%= config.site.src %>/data/**/*.{json,yml}',
         assets: '<%= config.site.dest %>/assets',
         helpers: [
@@ -19,7 +26,18 @@ module.exports = {
         ],
         flatten: false,
         layout: 'default.hbs',
-        layoutdir: '<%= config.site.src %>/templates/layouts'
+        layoutdir: '<%= config.site.src %>/templates/layouts',
+        plugins: [
+            'grunt-assemble-sitemap'
+        ],
+        sitemap: {
+            homepage: 'http://www.domainname.com',
+            relativedest: true,
+            changefreq: 'weekly',
+            priority: '0.5',
+            exclude: ["403", "404", "500"],
+            robot: true
+        }
     },
     default: {
         files: [{

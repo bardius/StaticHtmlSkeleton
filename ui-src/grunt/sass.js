@@ -19,7 +19,7 @@ module.exports = {
             sourcemap: false
         },
         files: {
-            '<%= config.css.path %>/styles.css': '<%= config.scss.path %>/app.scss'
+            '<%= config.css.path %>/<%= config.css.releaseFile %>': '<%= config.scss.path %>/app.scss'
         }
     },
     release: {
@@ -36,7 +36,7 @@ module.exports = {
             sourcemap: false
         },
         files: {
-            '<%= config.css.path %>/styles.css': '<%= config.scss.path %>/app.scss'
+            '<%= config.css.path %>/<%= config.css.releaseFile %>': '<%= config.scss.path %>/app.scss'
         }
     }
 };

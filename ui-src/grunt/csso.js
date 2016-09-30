@@ -7,7 +7,7 @@
 module.exports = {
     release: {
         files: {
-            '<%= config.css.path %>/styles.css': '<%= config.css.path %>/styles.css'
+            '<%= config.css.path %>/<%= config.css.releaseFile %>': '<%= config.css.path %>/<%= config.css.releaseFile %>'
         }
     }
 };

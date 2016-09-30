@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                     // <%=config.js.releaseDir%>
                     releaseDir: 'public_html/js/',
                     // <%=config.js.releaseFile%>
-                    releaseFile: 'scripts.min.js',
+                    releaseFile: grunt.option('releaseVersion') + '-' + 'scripts.min.js' || 'scripts.min.js',
                     // <%=config.js.scriptFileList%>
                     scriptFileList: [
                         // ES5 Shims for legacy browsers
@@ -100,7 +100,9 @@ module.exports = function (grunt) {
                 },
                 css: {
                     // <%= config.css.path %>
-                    path: 'public_html/css'
+                    path: 'public_html/css',
+                    // <%=config.css.releaseFile%>
+                    releaseFile: grunt.option('releaseVersion') + '-' + 'styles.css' || 'styles.css'
                 },
                 scss: {
                     // <%= config.scss.path %>

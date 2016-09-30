@@ -1,5 +1,5 @@
 {
-  "name": "f5-static-html-skeleton",
+  "name": "f6-static-html-skeleton",
   "title": "Static Html Skeleton",
   "description": "A static website generator with integrated Zurb Foundation 6",
   "version": "2.0.0",
@@ -28,6 +28,7 @@
     "babel-eslint": "^6.1.0",
     "babel-preset-es2015": "^6.9.0",
     "grunt": "~1.0.1",
+    "grunt-assemble-sitemap": "^0.2.6",
     "grunt-autoprefixer": "~3.0.3",
     "grunt-babel": "^6.0.0",
     "grunt-composer": "~0.4.1",
