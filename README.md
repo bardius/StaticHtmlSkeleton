@@ -5,22 +5,31 @@
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![Gitter chat](https://badges.gitter.im/bardius/StaticHtmlSkeleton.png)](https://gitter.im/bardius/StaticHtmlSkeleton)
 
-Static HTML Project Skeleton Grunt Build with integrated Zurb Foundation 6
+![](http://www.bardis.info/StaticHtmlSkeleton.png?)
+
+Static HTML Project Generator distribution with integrated Zurb Foundation 6 (v6.2.3)
 ============================================================================
 
-This is a skeleton for kick starting new static HTML5 projects that require to be fully responsive.
-Bower and Grunt with custom build tasks are included for better workflow on front end and.
-Zurb Foundation 5 front end framework is already included and provides out of the box responsive functionality for the most common website features.
-Pages are generated with grunt assemble npm module from handlebars templates while Zurb Foundation 5 is integrated.
-Best practices are being used for htaccess, favicons, html meta, og meta, twiter card meta, google analytics etc.
+StaticHtmlSkeleton is a Static HTML Project Generator distribution with integrated Zurb Foundation 6 Framework.
 
-You can find the documentation for Zurb Foundation 5 here http://foundation.zurb.com/docs/
+Travis CI, Bower and Grunt with custom builds are included for better workflow on the Front End, while Foundation 6 is 
+the framework of choice that has been integrated in all the templates/views. Cache busting is also been taken care of.
+
+Pages are generated with grunt assemble npm module from handlebars templates while best practices are being used for 
+htaccess, favicons, html meta, og meta, twiter card meta, google analytics etc.
+
+ESLint and SCSSLint has been set to ensure standards along with Babel to allow ES2015 code. Last but not least, Jasmine 
+is in place for Unit testing. 
+
+You can browse the Git repository, that I update with big releases every couple of months or so, and use freely for your 
+projects.
+
+You can find the documentation for Zurb Foundation 6 here http://foundation.zurb.com/docs/.
 
 Requirements
 
 * [NodeJs] (http://nodejs.org/)
 * [Ruby] (http://www.rubyinstaller.org/)
-* [Sass] (http://sass-lang.com/install)
 * [Grunt] (http://gruntjs.com/)
 * [Bower] (https://github.com/bower/bower)
 
@@ -28,19 +37,47 @@ Requirements
 Quick Start
 ------------------------------------------------------
 
-To setup and use follow these steps
+The fastest way to get everything running is (must have nodejs and ruby installed):
 
-    1. Checkout of the SVN repo
-    2. Setup your virtual host localy (see details in relevant section of readme file).
-    3. The rood dir of your host should be trunk/public_html
-    4. Install any dependencies if not already existing in your system
-    5. Go to the trunk folder
-    6. Run [sudo] npm install -g grunt
-    7. Run [sudo] npm install -g grunt-cli
-    8. Run [sudo] npm install -g bower
-    9. Run npm install
-    10. Run grunt setup
-    11. Use the commands grunt [watch, dev, deploy, generate]
+	1. git clone https://github.com/bardius/StaticHtmlSkeleton.git
+	2. cd StaticHtmlSkeleton
+	3. npm install -g grunt grunt-cli bower
+	4. npm run setup
+	5. Access the website at localhost:8000 (grunt watch mode should be on to recompile your changes)
+
+
+Manual Setup
+------------------------------------------------------
+
+Due to the use of the Zurb Foundation Framework 6 (version 6.2) the need for the following steps is unavoidable unless 
+you do not need the framework at all.
+
+We need to install NodeJs, Node Packaged Modules, Ruby, GIT and bower dependency manager if they are not already 
+installed to the system.
+
+More information can be found below at their official web sites:
+
+	http://git-scm.com/downloads				(GIT)
+	http://nodejs.org/                          (NodeJs)
+	https://npmjs.org/                          (Node Packaged Modules)
+	http://www.rubyinstaller.org/               (Ruby)
+	https://github.com/bower/bower				(Bower)
+	http://foundation.zurb.com/sites/docs/	    (Foundation 6 - Sass based)
+	http://assemble.io/                         (Assemble)
+
+The command line steps are:
+
+	1. [sudo] npm install -g grunt grunt-cli bower
+	2. [sudo] npm run setup
+	3. grunt serve [release, dev, watch] 
+
+Your project should work now and you can see your front end working, all the source files are found in the ui-src folder
+along with the existing Grunt tasks and all the layouts, partials and pages are placed under statix-src.
+
+Visit to localhost:8000 to view the website after grunt serve task is run.
+
+Tip: In case you are behind a firewall and connection to git is refused, force https for all git connections with running 
+this in your bash git config --global url."https://".insteadOf git://
 
 
 Dependencies
@@ -48,19 +85,28 @@ Dependencies
 
     1. Install NodeJs and add it to you system PATH (http://nodejs.org/download/)
     2. Install Ruby or run gem update --system to ensure latest version (https://www.ruby-lang.org/en/downloads/)
-    3. Install Sass by running gem install sass (http://sass-lang.com/install)
 
 
 How To Use
 ---------------------------------------------
 
-The HTML files are generated with Grunt tasks based on Assemble generator with the Handlebars templates found in trunk/static-src folder. The templates are split into layouts, partials and pages. Partials can be included in a layout, page or another partial. Pages can have variables whose values are defined in the top part of the file (eg. page title).
+The HTML files are generated with Grunt tasks based on Assemble generator with the Handlebars templates found in 
+/statix-src folder. The templates are split into layouts, partials and pages. 
 
-All the custom JavaScript should be inside the /trunk/public_html/js/script.js file following the structural pattern and self declaring variable/method names. Alternatively, you can write your own jQuery plugin with a module pattern that should then be placed in the proper folder and included in the Gruntfile to be compiled with the rest. Mind the existing Foundation scripts, no need to reinvent the wheel.
+Partials can be included in a layout, page or another partial. Pages can have variables whose values are defined in the 
+top part of the file (eg. page title).
 
-In the /trunk/sass folder you can find the existing styles and place your own. Mind the existing Foundation variables and helper classes, no need to reinvent the wheel. For the documentation of this front end framework please check Zurb Foundation Docs
+All the custom JavaScript should be inside the /ui-src/js/script.js file following the structural pattern and self 
+declaring variable/method names. Alternatively, you can write your own jQuery plugin with a module pattern that should 
+then be placed in the proper folder and included in the Gruntfile to be compiled with the rest. Mind the existing 
+Foundation scripts, no need to reinvent the wheel.
 
-You can run the Grunt tasks for the trunk folder and all the compiled/generated files will be placed to the trunk/public_html folder
+In the /ui-src/sass folder you can find the existing styles and place your own. Mind the existing Foundation variables 
+and helper classes, no need to reinvent the wheel. For the documentation of this front end framework please check 
+Zurb Foundation Docs.
+
+You can run the Grunt tasks for the root folder and all the compiled/generated files will be placed to the public_html 
+folder.
 
 
 Virtual Host Settings
@@ -69,7 +115,7 @@ Virtual Host Settings
 Here is a sample setup for your virtual host configuration
 
 	<VirtualHost *:80>
-               ServerAdmin support@domain.com
+                ServerAdmin support@domain.com
 
                 ServerName domain.com
                 ServerAlias domain.co.uk
@@ -92,25 +138,29 @@ Here is a sample setup for your virtual host configuration
                 CustomLog ${APACHE_LOG_DIR}/domain.com.access.log combined
         </VirtualHost>
 
+
 Useful Links and Documentation
 ----------------------------------------------
 
-Link to Front end Framework http://foundation.zurb.com/
+Links to Front end Frameworks (Zurb and Boostrap)
+
+http://bootstrap.braincrafted.com/
+http://foundation.zurb.com/
 
 NodeJs, Node Packaged Modules, Ruby, compass, sass, foundation gems and GIT and bower dependency manager
 
-http://git-scm.com/downloads				(GIT)
+http://git-scm.com/downloads				    (GIT)
 
-http://nodejs.org/					(NodeJs)
+http://nodejs.org/					            (NodeJs)
 
-https://npmjs.org/					(Node Packaged Modules)
+https://npmjs.org/					            (Node Packaged Modules)
 
-http://www.rubyinstaller.org/				(Ruby)
+http://www.rubyinstaller.org/				    (Ruby)
 
-https://github.com/bower/bower				(Bower)
+https://github.com/bower/bower				    (Bower)
 
-http://sass-lang.com/install				(Sass)
+http://sass-lang.com/install				    (Sass)
 
-http://compass-style.org/install/			(Compass)
+http://foundation.zurb.com/sites/docs/		    (Foundation 6 - Sass based)
 
-http://foundation.zurb.com/docs/sass.html		(Foundation 5 - Sass based)
+http://assemble.io/                             (Assemble)
