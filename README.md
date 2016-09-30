@@ -34,6 +34,13 @@ Requirements
 * [Bower] (https://github.com/bower/bower)
 
 
+Dependencies
+---------------------------------------------
+
+    1. Install NodeJs and add it to you system PATH (http://nodejs.org/download/)
+    2. Install Ruby or run gem update --system to ensure latest version (https://www.ruby-lang.org/en/downloads/)
+
+
 Quick Start
 ------------------------------------------------------
 
@@ -44,6 +51,28 @@ The fastest way to get everything running is (must have nodejs and ruby installe
 	3. npm install -g grunt grunt-cli bower
 	4. npm run setup
 	5. Access the website at localhost:8000 (grunt watch mode should be on to recompile your changes)
+
+
+How To Use
+---------------------------------------------
+
+The HTML files are generated with Grunt tasks based on Assemble generator with the Handlebars templates found in 
+/statix-src folder. The templates are split into layouts, partials and pages. 
+
+Partials can be included in a layout, page or another partial. Pages can have variables whose values are defined in the 
+top part of the file (eg. page title).
+
+All the custom JavaScript should be inside the /ui-src/js/script.js file following the structural pattern and self 
+declaring variable/method names. Alternatively, you can write your own jQuery plugin with a module pattern that should 
+then be placed in the proper folder and included in the Gruntfile to be compiled with the rest. Mind the existing 
+Foundation scripts, no need to reinvent the wheel.
+
+In the /ui-src/sass folder you can find the existing styles and place your own. Mind the existing Foundation variables 
+and helper classes, no need to reinvent the wheel. For the documentation of this front end framework please check 
+Zurb Foundation Docs.
+
+You can run the Grunt tasks for the root folder and all the compiled/generated files will be placed to the public_html 
+folder.
 
 
 Manual Setup
@@ -78,35 +107,6 @@ Visit to localhost:8000 to view the website after grunt serve task is run.
 
 Tip: In case you are behind a firewall and connection to git is refused, force https for all git connections with running 
 this in your bash git config --global url."https://".insteadOf git://
-
-
-Dependencies
----------------------------------------------
-
-    1. Install NodeJs and add it to you system PATH (http://nodejs.org/download/)
-    2. Install Ruby or run gem update --system to ensure latest version (https://www.ruby-lang.org/en/downloads/)
-
-
-How To Use
----------------------------------------------
-
-The HTML files are generated with Grunt tasks based on Assemble generator with the Handlebars templates found in 
-/statix-src folder. The templates are split into layouts, partials and pages. 
-
-Partials can be included in a layout, page or another partial. Pages can have variables whose values are defined in the 
-top part of the file (eg. page title).
-
-All the custom JavaScript should be inside the /ui-src/js/script.js file following the structural pattern and self 
-declaring variable/method names. Alternatively, you can write your own jQuery plugin with a module pattern that should 
-then be placed in the proper folder and included in the Gruntfile to be compiled with the rest. Mind the existing 
-Foundation scripts, no need to reinvent the wheel.
-
-In the /ui-src/sass folder you can find the existing styles and place your own. Mind the existing Foundation variables 
-and helper classes, no need to reinvent the wheel. For the documentation of this front end framework please check 
-Zurb Foundation Docs.
-
-You can run the Grunt tasks for the root folder and all the compiled/generated files will be placed to the public_html 
-folder.
 
 
 Virtual Host Settings
