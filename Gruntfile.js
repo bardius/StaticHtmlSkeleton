@@ -154,8 +154,9 @@ module.exports = function (grunt) {
     require('jit-grunt')(grunt);
 
     // Load all the grunt tasks
-    require('load-grunt-tasks')(grunt);
-    grunt.loadNpmTasks('assemble');
+    require('load-grunt-tasks')(grunt, {
+        scope: 'devDependencies'
+    });
 
     /* ==========================================================================================
      Available tasks:

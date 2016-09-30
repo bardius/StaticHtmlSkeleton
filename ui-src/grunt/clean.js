@@ -6,6 +6,10 @@
 
 module.exports = {
     all: [
-        '<%= config.statix.path %>/**/*.html'
+        '<%= config.statix.path %>/css/*',
+        '<%= config.statix.path %>/js/*',
+        '<%= config.statix.path %>/**/*.html',
+        '<%= config.statix.path %>/sitemap.xml',
+        '<%= config.statix.path %>/robots.xml'
     ]
 };
