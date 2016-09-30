@@ -9,12 +9,15 @@ matrix:
     allow_failures:
 
 before_install:
+  - rvm install 2.2.2
   - node --version
   - npm -v
+
+install:
   - npm install -g grunt-cli bower
+  - npm run setup
 
 before_script:
-  - npm run setup
 
 script:
   - grunt travis
