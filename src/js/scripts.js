@@ -13,9 +13,9 @@
     SkeletonApp.Config = {
         $body: $(document.body),
         init() {
-            SkeletonApp.sampleTest.simpleTest("sss");
             SkeletonApp.foundationConfig.init();
             SkeletonApp.UI.init();
+            SkeletonApp.UI.initDocs();
             SkeletonApp.cookiePolicy();
 
             SkeletonApp.windowResize.init();
@@ -100,6 +100,18 @@
         init() {
             // Start the date picker
             SkeletonApp.Forms.datepicker();
+        },
+        initDocs() {
+            // Start the Docs navigation
+            var $h2s = $('#docs h2');
+            var $toc = $('[data-docs-toc]');
+            console.log($toc);
+            $h2s.each(function () {
+                console.log(this);
+                var text = $(this).text();
+                var anchor = $(this).children('a').attr('href');
+                $toc.append('<li><a href="' + anchor + '">' + text + '</a></li>');
+            });
         }
     };
 
@@ -144,11 +156,4 @@
         }
     };
 
-    SkeletonApp.sampleTest = {
-        simpleTest(projectName) {
-            this.projectName = projectName;
-
-            return `${this.projectName} is starting. Welcome!`;
-        }
-    };
 })((window.SkeletonApp = window.SkeletonApp || {}), jQuery, window, document);

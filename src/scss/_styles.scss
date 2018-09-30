@@ -2,49 +2,13 @@
 //   Foundation Styles Overrides
 //-------------------------------------------
 
-header,
-nav,
-article,
-footer,
-address,
-section,
-aside,
-hgroup,
-figure {
-    display: block;
-}
-
-body,
-div,
-dl,
-dt,
-dd,
-ul,
-ol,
-li,
-pre,
-form,
-fieldset,
-p,
-blockquote,
-th,
-td {
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-}
-
 iframe {
     border: 0 !important;
     left: 0;
 }
 
 a {
+    transition: color 0.15s ease;
 }
 
 a:hover,
@@ -97,6 +61,7 @@ td {
 .no-padding {
     padding: 0 !important;
 }
+
 
 //-------------------------------------------
 //    Website Body / Backgrounds
