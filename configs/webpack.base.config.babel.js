@@ -1,6 +1,7 @@
 import webpack from "webpack";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
+import SitemapPlugin from "sitemap-webpack-plugin";
 import path from "path";
 import { distPath } from "./build/paths.config";
 import {
@@ -12,7 +13,8 @@ import {
     entrypoints,
     externalLibs,
     webpackProvides,
-    webpackRules
+    webpackRules,
+    sitemapPages
 } from "./build";
 
 // Getting values from the CLI arguments
@@ -49,7 +51,8 @@ let webpackBaseConfig = {
         new CleanWebpackPlugin(foldersToClean, { root: path.resolve(__dirname, "../"), watch: false }),
         new CopyWebpackPlugin(copyFilesList),
         new webpack.ProvidePlugin(webpackProvides),
-        extractCSS
+        extractCSS,
+        new SitemapPlugin("http://www.domain.com", sitemapPages, { fileName: "sitemap.xml" })
     ]
 };
 

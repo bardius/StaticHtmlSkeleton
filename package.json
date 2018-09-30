@@ -136,6 +136,7 @@
     "sass-loader": "^7.1.0",
     "script-loader": "^0.7.2",
     "semver": "^5.5.1",
+    "sitemap-webpack-plugin": "^0.6.0",
     "style-loader": "^0.23.0",
     "stylelint": "^9.6.0",
     "stylelint-checkstyle-formatter": "^0.1.2",

@@ -7,6 +7,7 @@ import entrypoints from "./entrypoints.config";
 import externalLibs from "./externals.config";
 import webpackProvides from "./provides.config";
 import webpackRules from "./rules.config";
+import sitemapPages from "./sitemap.config";
 import { enhanceEntriesWithHMR } from "./utilities";
 
 export {
@@ -19,5 +20,6 @@ export {
     externalLibs,
     webpackProvides,
     webpackRules,
+    sitemapPages,
     enhanceEntriesWithHMR
 };
