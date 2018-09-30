@@ -2,24 +2,22 @@
 language: node_js
 
 node_js:
-  - 4.4
-  - 4.6
+    - 8.12
+    - 10.0
 
 matrix:
-    allow_failures:
+    ? allow_failures
 
 before_install:
-  - rvm install 2.2.2
-  - node --version
-  - npm -v
+    - node -v
+    - npm -v
 
 install:
-  - npm install -g grunt-cli bower
-  - npm run setup
+    - npm run setup
 
-before_script:
+? before_script
 
 script:
-  - grunt travis
+    - npm run travis
 
-after_script:
+? after_script

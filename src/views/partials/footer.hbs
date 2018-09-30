@@ -1,0 +1,36 @@
+<!--  ==============  -->
+<!--  === Footer ===  -->
+<!--  ==============  -->
+<div class="footer-wrapper row expanded">
+    <footer class="footer row contain-to-grid">
+
+        <div id="footer-nav" class="large-12 small-12 columns">
+            <div class="menu-centered">
+                <ul class="footer-menu vertical medium-horizontal menu">
+                    <li {{#is basename "sitemap"}} class="active"{{/is}}>
+                        <a href="/sitemap.html" title="Sitemap">
+                            <span>Sitemap</span>
+                        </a>
+                    </li>
+                    <li {{#is basename "tnc"}} class="active"{{/is}}>
+                        <a href="/tnc.html" title="Terms &amp; Conditions">
+                            <span>Terms &amp; Conditions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#wrapper" title="Top">
+                            <span>Top</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {{> smo_links }}
+
+        <div id="copyrights" class="large-12 small-12 columns text-center large-text-left">
+            <p>Copyrights &copy; {{year}}</p>
+        </div>
+
+    </footer>
+</div>

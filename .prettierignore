@@ -1,0 +1,5 @@
+public_html
+docs
+src/js/vendor
+package.json
+**/*.min*

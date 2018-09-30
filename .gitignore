@@ -9,6 +9,18 @@
 *.scssc
 
 
+# IDE #
+########
+*.iml
+.idea/
+*.swp
+*.map
+*.sublime-*
+nbproject/
+*.lck
+*.lock
+
+
 # OS generated files #
 ######################
 .DS_Store
@@ -21,11 +33,15 @@ ehthumbs.db
 Thumbs.db
 
 
-# Random #
+# Extras #
 #################
-*.sublime-*
-nbproject/
 node_modules/
 npm-debug.log
-*.iml
-.idea/
+logs
+*.log
+pids
+*.pid
+*.seed
+*.lock-wscript
+*.awcache
+doc

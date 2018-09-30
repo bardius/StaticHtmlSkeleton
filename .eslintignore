@@ -1,2 +1,9 @@
 # ignore everything in the bower_components folders
 /**/bower_components/**/*.js
+/dist/**
+/coverage/**
+/prod/**
+/docs/**
+/tmp/**
+/dist-release/**
+/node-modules/**

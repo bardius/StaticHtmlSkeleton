@@ -9,14 +9,13 @@ engines:
         enabled: true
     duplication:
         enabled: true
-        config:
+        ? config
         languages:
             - javascript
 ratings:
     paths:
-        - "ui-src/**"
+        - "src/js/**"
 
 exclude_paths:
-    - "spec/**/*"
     - "**/bower_components/**/*"
     - "**/libs/**/*"
