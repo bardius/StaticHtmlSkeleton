@@ -1,5 +1,7 @@
+/* global ga */
+
 /* ==========================================================================
- SkeletonApp.Trak - Universal event tracking API
+ Trak - Universal event tracking API
 
  # Default implementation uses is Google Analytics:
  https://developers.google.com/analytics/devguides/collection/analyticsjs/
@@ -8,20 +10,25 @@
  https://developers.google.com/analytics/devguides/collection/analyticsjs/events
 
  ### Usage:
- SkeletonApp.Trak.event('category', 'action');
- SkeletonApp.Trak.event('category', 'action', 'label');
- SkeletonApp.Trak.event('category', 'action', 'label', value); // value is a number
+ Trak.event('category', 'action');
+ Trak.event('category', 'action', 'label');
+ Trak.event('category', 'action', 'label', value); // value is a number
  ========================================================================== */
-(function(SkeletonApp) {
-    SkeletonApp.Trak = {
-        clean(str) {
-            return str.toString().replace(/\s|'|"/g, "-");
-        },
-        event(category, action, label, value) {
-            if (typeof ga !== "undefined") {
-                // use _gaq for old style
-                ga("send", "event", this.clean(category), this.clean(action), this.clean(label), value);
-            }
+
+class Trak {
+    constructor(props) {
+        this.props = props;
+    }
+
+    static sanitizeValue(value) {
+        return value.toString().replace(/\s|'|"/g, "-");
+    }
+
+    static sendEvent(category, action, label, value) {
+        if (typeof ga !== "undefined") {
+            ga("send", "event", sanitizeValue(category), sanitizeValue(action), sanitizeValue(label), value);
         }
-    };
-})((window.SkeletonApp = window.SkeletonApp || {}));
+    }
+}
+
+export default Trak;

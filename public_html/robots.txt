@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /403.html
-Disallow: /404.html
-Disallow: /500.html
-
-Sitemap: http://www.domainname.com/sitemap.xml

@@ -5,6 +5,6 @@ import { distPath } from "./paths.config";
  https://github.com/johnagan/clean-webpack-plugin
  */
 
-const foldersToClean = [`${distPath}/**/*.*`];
+const foldersToClean = [`${distPath}`];
 
 export default foldersToClean;

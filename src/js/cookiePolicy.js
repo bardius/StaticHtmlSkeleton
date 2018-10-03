@@ -1,24 +1,24 @@
-/*
- Project: Project Name
- Authors: George SkeletonApp
- */
+/* global $ */
+import Cookies from "./helpers/Cookies";
 
-// Create a closure to maintain scope of the '$' and SkeletonApp
-(function(SkeletonApp, $, window, document, undefined) {
-    SkeletonApp.cookiePolicy = function() {
-        /**
-         * Test if user has been to site before and accepted cookies
-         * If so, keep message hidden
-         * If not, keep visible and allow user to accept
-         */
-        const $cookiePolicyEl = $("#cookie-acceptance");
+class CookiePolicy {
+    constructor(cookiePolicySelector, props) {
+        this.cookiePolicySelector = cookiePolicySelector;
+        this.props = props;
+        this.init();
+    }
 
-        if (SkeletonApp.cookies.getItem("cookies-agreed") !== "true") {
+    init() {
+        const $cookiePolicyEl = $(this.cookiePolicySelector);
+
+        if (Cookies.getItem("cookies-agreed") !== "true") {
             $cookiePolicyEl.removeClass("is-hidden");
 
             $cookiePolicyEl.find(".accept-button").on("click", e => {
-                SkeletonApp.cookies.setItem("cookies-agreed", "true", Infinity, "/");
+                Cookies.setItem("cookies-agreed", "true", Infinity, "/");
             });
         }
-    };
-})((window.SkeletonApp = window.SkeletonApp || {}), jQuery, window, document);
+    }
+}
+
+export default CookiePolicy;

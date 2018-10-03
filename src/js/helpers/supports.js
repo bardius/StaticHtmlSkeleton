@@ -1,32 +1,33 @@
-/*	Author:  */
+/* global window, document */
 
-(function(SkeletonApp) {
-    SkeletonApp.Supports = {
-        // SkeletonApp.Supports.touch
-        touch:
-            "ontouchstart" in document.documentElement || !!(window.DocumentTouch && document instanceof DocumentTouch),
-        touch2: !!("onorientationchange" in window && "ontouchstart" in window),
+class Supports {
+    constructor(props) {
+        this.props = props;
+    }
 
-        // SkeletonApp.Supports.isAndroidNativeBrowser
-        isAndroidNativeBrowser: (function() {
-            const ua = navigator.userAgent.toLowerCase();
-            return ua.indexOf("android") !== -1 && ua.indexOf("mobile") !== -1 && ua.indexOf("chrome") === -1;
-        })(),
+    static touch() {
+        return (
+            "ontouchstart" in document.documentElement || !!(window.DocumentTouch && document instanceof DocumentTouch)
+        );
+    }
 
-        // SkeletonApp.Supports.viewportW()
-        viewportW() {
-            const a = document.documentElement.clientWidth;
+    static touch2() {
+        return !!("onorientationchange" in window && "ontouchstart" in window);
+    }
 
-            const b = window.innerWidth;
-            return a < b ? b : a;
-        },
+    static viewportW() {
+        const a = document.documentElement.clientWidth;
 
-        // SkeletonApp.Supports.viewportH()
-        viewportH() {
-            const a = document.documentElement.clientHeight;
+        const b = window.innerWidth;
+        return a < b ? b : a;
+    }
 
-            const b = window.innerHeight;
-            return a < b ? b : a;
-        }
-    };
-})((window.SkeletonApp = window.SkeletonApp || {}));
+    static viewportH() {
+        const a = document.documentElement.clientHeight;
+
+        const b = window.innerHeight;
+        return a < b ? b : a;
+    }
+}
+
+export default Supports;

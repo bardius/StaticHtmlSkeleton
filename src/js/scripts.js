@@ -1,159 +1,153 @@
-/* globals Foundation, jQuery */
-/*
- Project: Project Name
- Authors: George SkeletonApp
- */
+/* globals window, document, Foundation, $ */
 
-// Create a closure to maintain scope of the '$' and SkeletonApp
-(function(SkeletonApp, $, window, document, undefined) {
-    $(() => {
-        SkeletonApp.Config.init();
-    });
+import NotificationDispatcher from "./helpers/NotificationDispatcher";
+import Supports from "./helpers/Supports";
 
-    SkeletonApp.Config = {
-        $body: $(document.body),
-        init() {
-            SkeletonApp.foundationConfig.init();
-            SkeletonApp.UI.init();
-            SkeletonApp.UI.initDocs();
-            SkeletonApp.cookiePolicy();
+class App {
+    constructor(props) {
+        this.props = props;
+        this.$body = $(document.body);
+        this.init();
+    }
 
-            SkeletonApp.windowResize.init();
+    init() {
+        $(() => {
+            this.initFoundation();
+            this.initUI();
+            this.initSampleDocs();
+            this.initWindowResize();
 
-            if (SkeletonApp.Supports.touch) {
-                SkeletonApp.touch.init();
+            if (Supports.touch()) {
+                this.initTouch();
             }
 
             $(window).on("load", () => {});
-        }
-    };
+        });
+    }
 
-    SkeletonApp.foundationConfig = {
-        init() {
-            Foundation.Reveal.defaults.animationIn = "fade-in";
-            Foundation.Reveal.defaults.animationOut = "fade-out";
-            Foundation.Reveal.defaults.resetOnClose = true;
-            Foundation.Reveal.defaults.closeOnClick = true;
-            Foundation.Reveal.defaults.closeOnEsc = true;
+    initFoundation() {
+        Foundation.Reveal.defaults.animationIn = "fade-in";
+        Foundation.Reveal.defaults.animationOut = "fade-out";
+        Foundation.Reveal.defaults.resetOnClose = true;
+        Foundation.Reveal.defaults.closeOnClick = true;
+        Foundation.Reveal.defaults.closeOnEsc = true;
 
-            Foundation.Orbit.defaults.animInFromRight = "fade-in";
-            Foundation.Orbit.defaults.animOutToRight = "fade-out";
-            Foundation.Orbit.defaults.animInFromLeft = "fade-in";
-            Foundation.Orbit.defaults.animOutToLeft = "fade-out";
-            Foundation.Orbit.defaults.autoPlay = false;
-            Foundation.Orbit.defaults.timerDelay = 8000;
-            Foundation.Orbit.defaults.infiniteWrap = false;
-            Foundation.Orbit.defaults.swipe = true;
-            Foundation.Orbit.defaults.pauseOnHover = true;
-            Foundation.Orbit.defaults.accessible = true;
-            Foundation.Orbit.defaults.useMUI = true;
-            Foundation.Orbit.defaults.bullets = true;
-            Foundation.Orbit.defaults.navButtons = true;
+        Foundation.Orbit.defaults.animInFromRight = "fade-in";
+        Foundation.Orbit.defaults.animOutToRight = "fade-out";
+        Foundation.Orbit.defaults.animInFromLeft = "fade-in";
+        Foundation.Orbit.defaults.animOutToLeft = "fade-out";
+        Foundation.Orbit.defaults.autoPlay = false;
+        Foundation.Orbit.defaults.timerDelay = 8000;
+        Foundation.Orbit.defaults.infiniteWrap = false;
+        Foundation.Orbit.defaults.swipe = true;
+        Foundation.Orbit.defaults.pauseOnHover = true;
+        Foundation.Orbit.defaults.accessible = true;
+        Foundation.Orbit.defaults.useMUI = true;
+        Foundation.Orbit.defaults.bullets = true;
+        Foundation.Orbit.defaults.navButtons = true;
 
-            Foundation.Accordion.defaults.slideSpeed = 250;
-            Foundation.Accordion.defaults.multiExpand = false;
-            Foundation.Accordion.defaults.allowAllClosed = true;
+        Foundation.Accordion.defaults.slideSpeed = 250;
+        Foundation.Accordion.defaults.multiExpand = false;
+        Foundation.Accordion.defaults.allowAllClosed = true;
 
-            Foundation.OffCanvas.defaults.closeOnClick = true;
+        Foundation.OffCanvas.defaults.closeOnClick = true;
 
-            // Start the foundation Plugins Configuration
-            $(document).foundation();
+        // Start the foundation Plugins Configuration
+        $(document).foundation();
 
-            SkeletonApp.foundationConfig.setEnhancements();
-        },
-        setEnhancements() {
-            // Enhance the sticky header (fix for miscalculation of sticky-container height when unstuck
-            $(".header-sticky-container").on("sticky.zf.unstuckfrom:top", function() {
-                const stickyContentHeight = $(this)
-                    .find(".sticky")
-                    .first()
-                    .outerHeight(true);
-                $(this).css("height", `${stickyContentHeight}px`);
-            });
+        this.setFoundationEnhancements();
+    }
 
-            $(".header-sticky-container").on("sticky.zf.stuckto:top", () => {});
+    setFoundationEnhancements() {
+        const $headerStickyContainer = $(".header-sticky-container");
+        const $reveal = $(".reveal");
 
-            // Initialize again the foundation Orbit plugin within modals after they open
-            $(".reveal").on(
-                "open.zf.reveal",
-                Foundation.util.throttle(() => {
-                    $(".reveal [data-orbit]").each(function(carouselIndex) {
-                        SkeletonApp.foundationConfig.reInitOrbit(this);
-                    });
-                }, 100)
-            );
-        },
-        reInitOrbit(orbitElement) {
-            const $orbitElement = $(orbitElement);
-            let orbitSlider = new Foundation.Orbit($orbitElement);
-            orbitSlider.destroy();
+        // Enhance the sticky header (fix for miscalculation of sticky-container height when unstuck
+        $headerStickyContainer.on("sticky.zf.unstuckfrom:top", function() {
+            const stickyContentHeight = $(this)
+                .find(".sticky")
+                .first()
+                .outerHeight(true);
+            $(this).css("height", `${stickyContentHeight}px`);
+        });
 
-            $orbitElement.data("orbit", "");
-            $orbitElement.attr("style", "");
-            $orbitElement.find("ul").attr("style", "");
-            $orbitElement.find("li").attr("style", "");
-            orbitSlider = new Foundation.Orbit($orbitElement);
-        }
-    };
+        $headerStickyContainer.on("sticky.zf.stuckto:top", () => {});
 
-    SkeletonApp.UI = {
-        init() {
-            // Start the date picker
-            SkeletonApp.Forms.datepicker();
-        },
-        initDocs() {
-            // Start the Docs navigation
-            var $h2s = $('#docs h2');
-            var $toc = $('[data-docs-toc]');
-            console.log($toc);
-            $h2s.each(function () {
-                console.log(this);
-                var text = $(this).text();
-                var anchor = $(this).children('a').attr('href');
-                $toc.append('<li><a href="' + anchor + '">' + text + '</a></li>');
-            });
-        }
-    };
+        // Initialize again the foundation Orbit plugin within modals after they open
+        $reveal.on(
+            "open.zf.reveal",
+            Foundation.util.throttle(() => {
+                $(".reveal [data-orbit]").each(function(carouselIndex) {
+                    App.reInitOrbit(this);
+                });
+            }, 100)
+        );
+    }
 
-    SkeletonApp.Forms = {
-        $datepickerInputs: $(".datepickerField"),
-        datepicker() {
-            SkeletonApp.Forms.$datepickerInputs.fdatepicker({
-                autoShow: true,
-                // initialDate: new Date().toJSON().slice(0, 10),
-                disableDblClickSelection: false,
-                closeButton: true,
-                pickTime: false,
-                isInline: false
-            });
-        }
-    };
+    static reInitOrbit(orbitElement) {
+        const $orbitElement = $(orbitElement);
+        let orbitSlider = new Foundation.Orbit($orbitElement);
+        orbitSlider.destroy();
 
-    SkeletonApp.touch = {
-        init() {}
-    };
+        $orbitElement.data("orbit", "");
+        $orbitElement.attr("style", "");
+        $orbitElement.find("ul").attr("style", "");
+        $orbitElement.find("li").attr("style", "");
+        orbitSlider = new Foundation.Orbit($orbitElement);
+    }
 
-    SkeletonApp.windowResize = {
-        init() {
-            let currentBreakpoint = Foundation.MediaQuery.current;
+    initUI() {
+        this.initForms();
+    }
 
-            $(window).on(
-                "resize",
-                Foundation.util.throttle(() => {
-                    notifications.sendNotification(notifications.WINDOW_RESIZE);
+    initSampleDocs() {
+        // Start the sample Docs navigation
+        var $h2s = $("#docs h2");
+        var $toc = $("[data-docs-toc]");
+        $h2s.each(function() {
+            var text = $(this).text();
+            var anchor = $(this)
+                .children("a")
+                .attr("href");
+            $toc.append('<li><a href="' + anchor + '">' + text + "</a></li>");
+        });
+    }
 
-                    // re initialise the Foundation Orbit carousels
-                    $("[data-orbit]").each(function(carouselIndex) {
-                        SkeletonApp.foundationConfig.reInitOrbit(this);
-                    });
-                }, 100)
-            );
+    initForms() {
+        const $datepickerInputs = $(".datepickerField");
 
-            // Foundation event listener for breakpoint changes
-            $(window).on("changed.zf.mediaquery", (event, newSize, oldSize) => {
-                currentBreakpoint = Foundation.MediaQuery.current;
-            });
-        }
-    };
+        $datepickerInputs.fdatepicker({
+            autoShow: true,
+            // initialDate: new Date().toJSON().slice(0, 10),
+            disableDblClickSelection: false,
+            closeButton: true,
+            pickTime: false,
+            isInline: false
+        });
+    }
 
-})((window.SkeletonApp = window.SkeletonApp || {}), jQuery, window, document);
+    initTouch() {}
+
+    initWindowResize() {
+        let currentBreakpoint = Foundation.MediaQuery.current;
+
+        $(window).on(
+            "resize",
+            Foundation.util.throttle(() => {
+                window.SkeletonApp.notificationDispatcher.sendNotification(NotificationDispatcher.WINDOW_RESIZE);
+
+                // re initialise the Foundation Orbit carousels
+                $("[data-orbit]").each(function(carouselIndex) {
+                    App.reInitOrbit(this);
+                });
+            }, 100)
+        );
+
+        // Foundation event listener for breakpoint changes
+        $(window).on("changed.zf.mediaquery", (event, newSize, oldSize) => {
+            currentBreakpoint = Foundation.MediaQuery.current;
+        });
+    }
+}
+
+export default App;
