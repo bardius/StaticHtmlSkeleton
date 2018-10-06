@@ -18,6 +18,7 @@ install:
 ? before_script
 
 script:
-    - npm run travis
+    - npm run test
+    - npm run release
 
 ? after_script

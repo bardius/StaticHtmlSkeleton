@@ -2,7 +2,7 @@
   "name": "static-html-skeleton",
   "title": "Static Html Skeleton",
   "description": "A static website generator with integrated Zurb Foundation 6.4",
-  "version": "4.0.0",
+  "version": "3.0.0",
   "homepage": "https://github.com/bardius/StaticHtmlSkeleton",
   "authors": [
     {
@@ -43,6 +43,7 @@
     "checkstyle:js": "eslint \"src/**/*.js\" -f checkstyle -o reports/checkstyle/eslint.xml || true",
     "checkstyle:css": "stylelint \"src/**/*.scss\" -q --custom-formatter=./node_modules/stylelint-checkstyle-formatter 2>&1 | tee reports/checkstyle/stylelint.xml",
     "checkstyle": "npm-run-all checkstyle:js checkstyle:css",
+    "check:all": "npm-run-all check:node check:npm check:stylelint check:eslint",
     "check:npm": "./node_modules/.bin/npm-check -s --color || true",
     "check:node": "babel-node ./configs/check-node-version.babel.js",
     "check:stylelint": "stylelint-config-prettier-check",
@@ -50,8 +51,7 @@
     "pretty": "pretty-quick",
     "pretty:stagged": "pretty-quick --staged",
     "postinstall": "npm-run-all check:node check:npm",
-    "precommit": "npm-run-all pretty:stagged test",
-    "travis": "grunt travis --verbose"
+    "precommit": "npm-run-all pretty:stagged test"
   },
   "jestSonar": {
     "reportPath": "./reports/unit-tests/jest",
@@ -84,7 +84,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "babel-runtime": "^6.26.0",
-    "budo": "^11.3.2",
+    "budo": "^11.4.0",
     "chalk": "^2.4.1",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
@@ -106,7 +106,7 @@
     "handlebars-helpers": "^0.10.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^1.0.1",
+    "husky": "^1.1.1",
     "ink-docstrap": "^1.3.2",
     "jest": "^23.6.0",
     "jest-each": "^23.6.0",
