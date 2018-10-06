@@ -51,3 +51,4 @@ pids
 #################
 reports/
 docs/
+package-lock.json
