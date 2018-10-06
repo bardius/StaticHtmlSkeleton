@@ -14,7 +14,7 @@ class CookiePolicy {
         if (Cookies.getItem("cookies-agreed") !== "true") {
             $cookiePolicyEl.removeClass("is-hidden");
 
-            $cookiePolicyEl.find(".accept-button").on("click", e => {
+            $cookiePolicyEl.find(".accept-button").on("click", () => {
                 Cookies.setItem("cookies-agreed", "true", Infinity, "/");
             });
         }

@@ -18,6 +18,7 @@ class Cookies {
     }
 
     static hasItem(sKey) {
+        // eslint-disable-next-line no-useless-escape
         return new RegExp(`(?:^|;\\s*)${escape(sKey).replace(/[\-\.\+\*]/g, "\\$&")}\\s*\\=`).test(document.cookie);
     }
 
@@ -28,6 +29,7 @@ class Cookies {
         return unescape(
             document.cookie.replace(
                 new RegExp(
+                    // eslint-disable-next-line no-useless-escape
                     `(?:^|.*;\\s*)${escape(sKey).replace(/[\-\.\+\*]/g, "\\$&")}\\s*\\=\\s*((?:[^;](?!;))*[^;]?).*`
                 ),
                 "$1"
@@ -36,6 +38,7 @@ class Cookies {
     }
 
     static setItem(sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+        // eslint-disable-next-line no-useless-escape
         if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
             return;
         }
@@ -52,6 +55,8 @@ class Cookies {
                 case Date:
                     sExpires = `; expires=${vEnd.toGMTString()}`;
                     break;
+                default:
+                    sExpires = "; expires=Tue, 19 Jan 2038 03:14:07 GMT";
             }
         }
 
@@ -70,8 +75,11 @@ class Cookies {
 
     static keys() {
         const aKeys = document.cookie
+            // eslint-disable-next-line no-useless-escape
             .replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "")
+            // eslint-disable-next-line no-useless-escape
             .split(/\s*(?:\=[^;]*)?;\s*/);
+        // eslint-disable-next-line no-plusplus
         for (let nIdx = 0; nIdx < aKeys.length; nIdx++) {
             aKeys[nIdx] = unescape(aKeys[nIdx]);
         }

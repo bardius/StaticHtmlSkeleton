@@ -1,8 +1,4 @@
-/*
- Plugin: Plugin Name
- Authors: George SkeletonApp
- */
-
+/* global $ */
 /**
  * A jQuery plugin to add a class name and some text to selected elements
  *
@@ -15,7 +11,9 @@
         text: "default text"
     };
 
-    $.fn.sample_plugin = function(options) {
+    // eslint-disable-next-line no-param-reassign
+    $.fn.sample_plugin = options => {
+        // eslint-disable-next-line no-param-reassign
         options = $.extend(true, {}, defaults, options);
 
         return this.each(function() {

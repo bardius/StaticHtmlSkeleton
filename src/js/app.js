@@ -26,7 +26,7 @@ class App {
         });
     }
 
-    initUI() {
+    static initUI() {
         // Start the foundation Plugins Configuration
         FoundationConfig.setConfig();
         $(document).foundation();
@@ -36,7 +36,7 @@ class App {
         Forms.init();
     }
 
-    initSampleDocs() {
+    static initSampleDocs() {
         // Start the sample Docs navigation
         const $h2s = $("#docs h2");
         const $toc = $("[data-docs-toc]");
@@ -49,9 +49,10 @@ class App {
         });
     }
 
-    initTouch() {}
+    static initTouch() {}
 
-    initWindowResize() {
+    static initWindowResize() {
+        // eslint-disable-next-line no-unused-vars
         let currentBreakpoint = Foundation.MediaQuery.current;
 
         $(window).on(
@@ -67,6 +68,7 @@ class App {
         );
 
         // Foundation event listener for breakpoint changes
+        // eslint-disable-next-line no-unused-vars
         $(window).on("changed.zf.mediaquery", (event, newSize, oldSize) => {
             currentBreakpoint = Foundation.MediaQuery.current;
         });
