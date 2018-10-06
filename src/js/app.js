@@ -9,10 +9,10 @@ class App {
     constructor(props) {
         this.props = props;
         this.$body = $(document.body);
-        this.init();
+        App.init();
     }
 
-    init() {
+    static init() {
         $(() => {
             App.initUI();
             App.initSampleDocs();

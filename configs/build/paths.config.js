@@ -4,7 +4,7 @@ Preparing the paths that are used in the webpack configuration files
 
 const srcPath = "src";
 const nodeModulesPath = "node_modules";
-const distPath = "public_html";
+const distPath = "dist";
 const postCSSConfigPath = "./configs/build/postcss.config.js";
 const assembleLoaderPath = "./configs/loaders/webpack-assemble-loader.js";
 

@@ -6,7 +6,7 @@
     "coverageDirectory": "reports/unit-tests",
     "coverageReporters": ["lcov", "text", "text-summary"],
     "collectCoverageFrom": ["src/js**/**", "!**/__mocks__/**", "!**/index.js"],
-    "coveragePathIgnorePatterns": ["/specs/", "public_html"],
+    "coveragePathIgnorePatterns": ["/specs/", "/dist/"],
     "coverageThreshold": {
         "global": {
             "branches": 0,
