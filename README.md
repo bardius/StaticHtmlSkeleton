@@ -1,11 +1,6 @@
 [![Build Status](https://travis-ci.org/bardius/StaticHtmlSkeleton.svg?branch=master)](https://travis-ci.org/bardius/StaticHtmlSkeleton)
-[![Dependency Status](https://www.versioneye.com/user/projects/5593bc066238390015000034/badge.png)](https://www.versioneye.com/user/projects/5593bc066238390015000034)
-[![Dependency Status](https://www.versioneye.com/user/projects/5593bc5d6238390018000023/badge.png)](https://www.versioneye.com/user/projects/5593bc5d6238390018000023)
 [![Code Climate](https://codeclimate.com/github/bardius/StaticHtmlSkeleton/badges/gpa.svg)](https://codeclimate.com/github/bardius/StaticHtmlSkeleton)
 [![Gitter chat](https://badges.gitter.im/bardius/StaticHtmlSkeleton.png)](https://gitter.im/bardius/StaticHtmlSkeleton)
-[![npm][npm]][npm-url]
-[![node][node]][node-url]
-[![deps][deps]][deps-url]
 
 ![](http://www.bardis.info/StaticHtmlSkeleton.png?)
 
