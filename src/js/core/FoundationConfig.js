@@ -1,31 +1,10 @@
-/* globals window, document, Foundation, $ */
-
-import NotificationDispatcher from "./helpers/NotificationDispatcher";
-import Supports from "./helpers/Supports";
-
-class App {
+/* global Foundation, $ */
+class FoundationConfig {
     constructor(props) {
         this.props = props;
-        this.$body = $(document.body);
-        this.init();
     }
 
-    init() {
-        $(() => {
-            this.initFoundation();
-            this.initUI();
-            this.initSampleDocs();
-            this.initWindowResize();
-
-            if (Supports.touch()) {
-                this.initTouch();
-            }
-
-            $(window).on("load", () => {});
-        });
-    }
-
-    initFoundation() {
+    static setConfig() {
         Foundation.Reveal.defaults.animationIn = "fade-in";
         Foundation.Reveal.defaults.animationOut = "fade-out";
         Foundation.Reveal.defaults.resetOnClose = true;
@@ -51,14 +30,9 @@ class App {
         Foundation.Accordion.defaults.allowAllClosed = true;
 
         Foundation.OffCanvas.defaults.closeOnClick = true;
-
-        // Start the foundation Plugins Configuration
-        $(document).foundation();
-
-        this.setFoundationEnhancements();
     }
 
-    setFoundationEnhancements() {
+    static setEnhancements() {
         const $headerStickyContainer = $(".header-sticky-container");
         const $reveal = $(".reveal");
 
@@ -84,7 +58,7 @@ class App {
         );
     }
 
-    reInitOrbit(orbitElement) {
+    static reInitOrbit(orbitElement) {
         const $orbitElement = $(orbitElement);
         let orbitSlider = new Foundation.Orbit($orbitElement);
         orbitSlider.destroy();
@@ -95,59 +69,6 @@ class App {
         $orbitElement.find("li").attr("style", "");
         orbitSlider = new Foundation.Orbit($orbitElement);
     }
-
-    initUI() {
-        this.initForms();
-    }
-
-    initSampleDocs() {
-        // Start the sample Docs navigation
-        const $h2s = $("#docs h2");
-        const $toc = $("[data-docs-toc]");
-        $h2s.each(function() {
-            const text = $(this).text();
-            const anchor = $(this)
-                .children("a")
-                .attr("href");
-            $toc.append(`<li><a href="${anchor}">${text}</a></li>`);
-        });
-    }
-
-    initForms() {
-        const $datepickerInputs = $(".datepickerField");
-
-        $datepickerInputs.fdatepicker({
-            autoShow: true,
-            // initialDate: new Date().toJSON().slice(0, 10),
-            disableDblClickSelection: false,
-            closeButton: true,
-            pickTime: false,
-            isInline: false
-        });
-    }
-
-    initTouch() {}
-
-    initWindowResize() {
-        let currentBreakpoint = Foundation.MediaQuery.current;
-
-        $(window).on(
-            "resize",
-            Foundation.util.throttle(() => {
-                window.SkeletonApp.notificationDispatcher.sendNotification(NotificationDispatcher.WINDOW_RESIZE);
-
-                // re initialise the Foundation Orbit carousels
-                $("[data-orbit]").each((key, element) => {
-                    this.reInitOrbit(element);
-                });
-            }, 100)
-        );
-
-        // Foundation event listener for breakpoint changes
-        $(window).on("changed.zf.mediaquery", (event, newSize, oldSize) => {
-            currentBreakpoint = Foundation.MediaQuery.current;
-        });
-    }
 }
 
-export default App;
+export default FoundationConfig;

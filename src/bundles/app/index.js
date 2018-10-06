@@ -3,7 +3,7 @@ import Foundation from "foundation-sites";
 import whatInput from "what-input";
 import NotificationDispatcher from "../../js/helpers/NotificationDispatcher";
 import CookiePolicy from "../../js/CookiePolicy";
-import App from "../../js/scripts";
+import App from "../../js/App";
 
 window.jQuery = window.$ = jQuery;
 window.whatInput = whatInput;

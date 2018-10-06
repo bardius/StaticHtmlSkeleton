@@ -7,11 +7,11 @@ https://webpack.js.org/configuration/resolve
  */
 
 const aliases = {
-    core: path.resolve(__dirname, `${srcPathRelative}core`),
+    core: path.resolve(__dirname, `${srcPathRelative}/js/core`),
     assets: path.resolve(__dirname, `${srcPathRelative}assets`),
-    sample: path.resolve(__dirname, `${srcPathRelative}bundles/sample`),
-    components: path.resolve(__dirname, `${srcPathRelative}components`),
-    iifes: path.resolve(__dirname, `${srcPathRelative}iifes`),
+    app: path.resolve(__dirname, `${srcPathRelative}bundles/app`),
+    helpers: path.resolve(__dirname, `${srcPathRelative}/js/helpers`),
+    js: path.resolve(__dirname, `${srcPathRelative}/js`),
     views: path.resolve(__dirname, `${srcPathRelative}views`)
 };
 

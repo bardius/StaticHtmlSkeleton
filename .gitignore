@@ -45,4 +45,9 @@ pids
 *.seed
 *.lock-wscript
 *.awcache
-doc
+
+
+# Extras #
+#################
+reports/
+docs/

@@ -1,5 +1,5 @@
+const $ = require("jquery");
 const JSDOMEnvironment = require("jest-environment-jsdom");
-
 const documentHTML = '<main id="main-content"></main>';
 
 /*
@@ -10,6 +10,7 @@ class JSDOMEnvironmentGlobal extends JSDOMEnvironment {
     constructor(config) {
         super(config);
         this.dom.window.document.body.innerHTML = documentHTML;
+        this.global.$ =  this.global.jQuery = $(this.global);
         this.global.jsdom = this.dom;
     }
 

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<checkstyle version="4.3">
-  <file name="C:\wamp\www\StaticHtmlSkeleton\src\scss\app.scss"></file>
-  <file name="C:\wamp\www\StaticHtmlSkeleton\src\scss\_fonts.scss"></file>
-  <file name="C:\wamp\www\StaticHtmlSkeleton\src\scss\_foundation-icons.scss"></file>
-  <file name="C:\wamp\www\StaticHtmlSkeleton\src\scss\_settings.scss"></file>
-  <file name="C:\wamp\www\StaticHtmlSkeleton\src\scss\_styles.scss"></file>
-  <file name="C:\wamp\www\StaticHtmlSkeleton\src\bundles\app\index.scss"></file>
-</checkstyle>
