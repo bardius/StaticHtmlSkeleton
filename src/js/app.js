@@ -14,12 +14,12 @@ class App {
 
     init() {
         $(() => {
-            this.initUI();
-            this.initSampleDocs();
-            this.initWindowResize();
+            App.initUI();
+            App.initSampleDocs();
+            App.initWindowResize();
 
             if (Supports.touch()) {
-                this.initTouch();
+                App.initTouch();
             }
 
             $(window).on("load", () => {});
