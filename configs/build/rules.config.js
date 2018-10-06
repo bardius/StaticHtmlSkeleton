@@ -43,6 +43,7 @@ const webpackRules = [
             {
                 loader: path.resolve(assembleLoaderPath),
                 options: {
+                    hbsRootpath: `${srcPathAbsolute}views`,
                     layouts: `${srcPathAbsolute}views/layouts/**/*.hbs`,
                     partials: `${srcPathAbsolute}views/partials/**/*.hbs`,
                     helpers: null,

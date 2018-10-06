@@ -62,7 +62,6 @@ td {
     padding: 0 !important;
 }
 
-
 //-------------------------------------------
 //    Website Body / Backgrounds
 // ------------------------------------------
@@ -94,6 +93,24 @@ body {
     &.is-stuck {
         left: 0 !important;
         right: 0 !important;
+    }
+}
+
+.row {
+    &.expanded {
+        max-width: none;
+
+        .row {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    }
+
+    .row {
+        &.collapse {
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 }
 
@@ -148,6 +165,12 @@ header {
 //-------------------------------------------
 //    Navigation Menu Styles
 //-------------------------------------------
+
+.top-bar {
+    .title-bar {
+        width: 100%;
+    }
+}
 
 .top-bar,
 .off-canvas .menu {

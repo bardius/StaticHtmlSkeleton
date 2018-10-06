@@ -1,7 +1,7 @@
 {
   "name": "static-html-skeleton",
   "title": "Static Html Skeleton",
-  "description": "A static website generator with integrated Zurb Foundation 6",
+  "description": "A static website generator with integrated Zurb Foundation 6.4",
   "version": "4.0.0",
   "homepage": "https://github.com/bardius/StaticHtmlSkeleton",
   "authors": [
@@ -28,7 +28,6 @@
     "build": "webpack --config ./configs/webpack.dev.config.babel.js",
     "release": "webpack --config ./configs/webpack.prod.config.babel.js -p",
     "start": "webpack-dev-server --watch --config ./configs/webpack.dev.server.config.babel.js",
-    "start:debug": "webpack-dev-server --watch --config ./configs/webpack.dev.server.config.babel.js --env.debug",
     "serve": "budo --live --port 9001 --dir public_html",
     "serve:build": "npm-run-all build serve",
     "serve:release": "npm-run-all release serve",

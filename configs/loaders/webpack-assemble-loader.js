@@ -1,13 +1,43 @@
 import assemble from "assemble";
 import loaderUtils from "loader-utils";
+import validateOptions from "schema-utils";
 
 const assembleApp = assemble();
 const handlebarsHelpers = require("handlebars-helpers")();
+
+const schema = {
+    type: "object",
+    properties: {
+        hbsRootpath: {
+            type: "string"
+        },
+        layouts: {
+            type: "string"
+        },
+        partials: {
+            type: "string"
+        },
+        helpers: {
+            anyOf: [{ type: "array" }, { type: "object" }, { type: "null" }]
+        },
+        data: {
+            type: "object"
+        },
+        define: {
+            type: "object"
+        }
+    }
+};
 
 const webpackAssembleLoader = function(content) {
     this.cacheable && this.cacheable();
     const callback = this.async();
     const options = loaderUtils.getOptions(this) || {};
+    validateOptions(schema, options, "Webpack Assemble Loader");
+
+    if (!options.hbsRootpath) {
+        throw new Error("Root Path is required in the Assemble loader config");
+    }
 
     if (!options.layouts) {
         throw new Error("Layouts is required in the Assemble loader config");
@@ -16,6 +46,8 @@ const webpackAssembleLoader = function(content) {
     if (!options.partials) {
         throw new Error("Partials is required in the Assemble loader config");
     }
+
+    this.addContextDependency(options.hbsRootpath);
 
     assembleApp.layouts(options.layouts);
     assembleApp.partials(options.partials);

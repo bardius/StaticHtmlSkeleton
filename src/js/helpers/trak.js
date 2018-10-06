@@ -26,7 +26,14 @@ class Trak {
 
     static sendEvent(category, action, label, value) {
         if (typeof ga !== "undefined") {
-            ga("send", "event", sanitizeValue(category), sanitizeValue(action), sanitizeValue(label), value);
+            ga(
+                "send",
+                "event",
+                Trak.sanitizeValue(category),
+                Trak.sanitizeValue(action),
+                Trak.sanitizeValue(label),
+                value
+            );
         }
     }
 }

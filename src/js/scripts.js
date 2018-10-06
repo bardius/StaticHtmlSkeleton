@@ -77,14 +77,14 @@ class App {
         $reveal.on(
             "open.zf.reveal",
             Foundation.util.throttle(() => {
-                $(".reveal [data-orbit]").each(function(carouselIndex) {
-                    App.reInitOrbit(this);
+                $(".reveal [data-orbit]").each((key, element) => {
+                    this.reInitOrbit(element);
                 });
             }, 100)
         );
     }
 
-    static reInitOrbit(orbitElement) {
+    reInitOrbit(orbitElement) {
         const $orbitElement = $(orbitElement);
         let orbitSlider = new Foundation.Orbit($orbitElement);
         orbitSlider.destroy();
@@ -102,14 +102,14 @@ class App {
 
     initSampleDocs() {
         // Start the sample Docs navigation
-        var $h2s = $("#docs h2");
-        var $toc = $("[data-docs-toc]");
+        const $h2s = $("#docs h2");
+        const $toc = $("[data-docs-toc]");
         $h2s.each(function() {
-            var text = $(this).text();
-            var anchor = $(this)
+            const text = $(this).text();
+            const anchor = $(this)
                 .children("a")
                 .attr("href");
-            $toc.append('<li><a href="' + anchor + '">' + text + "</a></li>");
+            $toc.append(`<li><a href="${anchor}">${text}</a></li>`);
         });
     }
 
@@ -137,8 +137,8 @@ class App {
                 window.SkeletonApp.notificationDispatcher.sendNotification(NotificationDispatcher.WINDOW_RESIZE);
 
                 // re initialise the Foundation Orbit carousels
-                $("[data-orbit]").each(function(carouselIndex) {
-                    App.reInitOrbit(this);
+                $("[data-orbit]").each((key, element) => {
+                    this.reInitOrbit(element);
                 });
             }, 100)
         );

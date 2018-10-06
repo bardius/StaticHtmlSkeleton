@@ -5,8 +5,12 @@
     <footer class="footer row contain-to-grid">
 
         <div id="footer-nav" class="large-12 small-12 columns">
-            <div class="menu-centered">
-                <ul class="footer-menu vertical medium-horizontal menu">
+                <ul class="footer-menu vertical medium-horizontal align-center menu">
+                    <li {{#is basename "index"}} class="active"{{/is}}>
+                        <a href="/index.html" title="Sitemap">
+                            <span>Home</span>
+                        </a>
+                    </li>
                     <li {{#is basename "sitemap"}} class="active"{{/is}}>
                         <a href="/sitemap.html" title="Sitemap">
                             <span>Sitemap</span>
@@ -23,7 +27,6 @@
                         </a>
                     </li>
                 </ul>
-            </div>
         </div>
 
         {{> smo_links }}

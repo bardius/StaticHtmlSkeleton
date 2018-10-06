@@ -31,6 +31,7 @@ nbproject/
 Icon?
 ehthumbs.db
 Thumbs.db
+*.stackdump
 
 
 # Extras #

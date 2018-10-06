@@ -7,8 +7,11 @@ class MobileDetection {
 
     // mobile or desktop compatible event name, to be used with '.on' function
     static TOUCH_DOWN_EVENT_NAME = "mousedown touchstart";
+
     static TOUCH_UP_EVENT_NAME = "mouseup touchend";
+
     static TOUCH_MOVE_EVENT_NAME = "mousemove touchmove";
+
     static TOUCH_DOUBLE_TAB_EVENT_NAME = "dblclick dbltap";
 
     static isAndroid() {
@@ -31,7 +34,7 @@ class MobileDetection {
         return navigator.userAgent.match(/IEMobile/i);
     }
 
-    static isMobile() {
+    static isMobileUA() {
         return navigator.userAgent.toLowerCase().match(/mobile/i);
     }
 
@@ -50,7 +53,7 @@ class MobileDetection {
             MobileDetection.isIOS() ||
             MobileDetection.isOpera() ||
             MobileDetection.isWindows() ||
-            MobileDetection.isMobile()
+            MobileDetection.isMobileUA()
         );
     }
 }

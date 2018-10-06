@@ -43,7 +43,7 @@ class NotificationDispatcher {
 
     sendNotification(type, params) {
         for (let i = this.eventListeners.length - 1; i >= 0; i -= 1) {
-            let listener = this.eventListeners[i];
+            const listener = this.eventListeners[i];
 
             if (type === listener.type) {
                 if (listener.destroyOnUse) {
