@@ -28,12 +28,16 @@ let webpackProdConfig = {
                 cache: true,
                 parallel: true,
                 terserOptions: {
-                    ecma: 8,
+                    parse: {
+                        ecma: 8
+                    },
                     warnings: false,
                     compress: {
+                        ecma: 5,
                         warnings: false,
                         sequences: false,
                         dead_code: false,
+                        comparisons: false,
                         conditionals: false,
                         booleans: false,
                         unused: false,
@@ -41,9 +45,14 @@ let webpackProdConfig = {
                         join_vars: false,
                         drop_console: false
                     },
+                    mangle: {
+                        safari10: false
+                    },
                     output: {
+                        ecma: 5,
                         comments: false,
-                        beautify: false
+                        beautify: false,
+                        ascii_only: true
                     },
                     toplevel: false,
                     nameCache: null,
