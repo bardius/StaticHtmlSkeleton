@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/bardius/StaticHtmlSkeleton.svg?branch=master)](https://travis-ci.org/bardius/StaticHtmlSkeleton)
 ![](http://www.bardis.info/StaticHtmlSkeleton.png?)
 
-# Static HTML Project Generator distribution with integrated Zurb Foundation 6 (v6.4.3)
+# Static HTML Project Generator distribution with integrated Zurb Foundation 6 (v6.5.1)
 
 ## Table of contents
 
@@ -149,9 +149,9 @@ folder reports/checkstyle.
 
 To assist proper source code styling and formatting [Prettier](https://prettier.io/) has been added as a pre-commit
 step that will automatically format the CSS and Javascript source code on changed files. You can also manually run it.
-  
- npm run pretty-quick
-  
+
+npm run pretty-quick
+
 The configuration for Prettier rule set can be found at .prettierrc and .prettierignore files.
 
 ### Unit test JavaScript
@@ -182,7 +182,7 @@ Npm scripts have been created to assist checking if node requirements are met, i
 are any lint rules that conflict with prettier rules. Checks run as a post install step. You can also manually run them.
 
     npm run check:node
-    npm run check:npm-modules
+    npm run check:npm
     npm run check:eslint
     npm run check:stylelint
 

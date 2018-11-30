@@ -1,8 +1,8 @@
 {
   "name": "static-html-skeleton",
   "title": "Static Html Skeleton",
-  "description": "A static website generator with integrated Zurb Foundation 6.4",
-  "version": "3.0.0",
+  "description": "A static website generator with integrated Zurb Foundation 6.5",
+  "version": "3.1.0",
   "homepage": "https://github.com/bardius/StaticHtmlSkeleton",
   "authors": [
     {
@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "foundation-datepicker": "^1.5.6",
-    "foundation-sites": "^6.4.3",
+    "foundation-sites": "^6.5.1",
     "jquery": "^3.3.1",
     "motion-ui": "^2.0.3",
     "what-input": "^5.1.3"
