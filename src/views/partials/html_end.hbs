@@ -1,6 +1,8 @@
 
         <!-- Add your site or application scripts here -->
-        <script src="{{jsFilePath}}"></script>
+        {{#if jsFilePath}}
+            <script src="{{jsFilePath}}"></script>
+        {{/if}}
 
         <!-- Google Analytics -->
         <script>

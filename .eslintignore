@@ -1,5 +1,4 @@
-# ignore everything in the bower_components folders
-/**/bower_components/**/*.js
+/**/bower_components/**
 /dist/**
 /coverage/**
 /prod/**

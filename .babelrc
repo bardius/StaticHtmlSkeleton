@@ -1,16 +1,16 @@
 {
   "presets": [
-  "env"
+  "@babel/preset-env"
   ],
   plugins: [
-    "transform-es3-member-expression-literals",
-    "transform-es3-property-literals",
-    "transform-jscript",
-    "transform-exponentiation-operator",
-    "transform-async-to-generator",
-    "transform-object-rest-spread",
-    "add-module-exports",
-    "transform-object-assign",
-    "transform-class-properties"
+    "@babel/plugin-transform-member-expression-literals",
+    "@babel/plugin-transform-property-literals",
+    "@babel/plugin-transform-literals",
+    "@babel/plugin-transform-jscript",
+    "@babel/plugin-transform-exponentiation-operator",
+    "@babel/plugin-transform-async-to-generator",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-object-assign",
+    "@babel/plugin-proposal-class-properties"
   ]
 }

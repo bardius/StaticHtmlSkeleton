@@ -1,5 +1,10 @@
 dist
+dist-release
+coverage
+prod
 docs
+tmp
 src/js/vendor
 package.json
+package-lock.json
 **/*.min*
