@@ -4,13 +4,13 @@ const documentHTML = '<main id="main-content"></main>';
 
 /*
 Exposing JSDOM object as global, extending the default jest-environment-jsdom in order to allow objects like window
-location to be mutated within tests & adding initail HTML markup for the tests
+location to be mutated within tests & adding initial HTML markup for the tests
  */
 class JSDOMEnvironmentGlobal extends JSDOMEnvironment {
     constructor(config) {
         super(config);
         this.dom.window.document.body.innerHTML = documentHTML;
-        this.global.$ =  this.global.jQuery = $(this.global);
+        this.global.$ = this.global.jQuery = $(this.global);
         this.global.jsdom = this.dom;
     }
 

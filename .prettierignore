@@ -1,8 +1,7 @@
 dist
-dist-release
-coverage
-prod
 docs
+target
+reports
 tmp
 src/js/vendor
 package.json

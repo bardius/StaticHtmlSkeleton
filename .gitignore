@@ -52,4 +52,5 @@ pids
 reports/
 docs/
 dist/
+target/
 package-lock.json

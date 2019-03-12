@@ -24,7 +24,7 @@
     },
     "testURL": "http://www.domain.local",
     "rootDir": "../",
-    "setupTestFrameworkScriptFile": "<rootDir>/specs/jest.pre-run.js",
+    "setupFilesAfterEnv": ["<rootDir>/specs/jest.pre-run.js"],
     "testEnvironment": "<rootDir>/specs/jest.environment.js",
     "moduleFileExtensions": ["js"],
     "testResultsProcessor": "jest-sonar-reporter"

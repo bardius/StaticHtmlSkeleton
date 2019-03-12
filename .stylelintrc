@@ -3,6 +3,7 @@
         "stylelint-config-prettier"
     ],
     "plugins": [
+        "stylelint-no-unsupported-browser-features",
         "stylelint-order",
         "stylelint-selector-bem-pattern",
         "stylelint-scss"

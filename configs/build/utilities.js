@@ -14,7 +14,7 @@ const serverPort = (argv.env && argv.env.serverPort) || "9001";
 const enhanceEntriesWithHMR = entries => {
     let enhanceEntries = {};
 
-    Object.keys(entries).map(entryKey => {
+    Object.keys(entries).forEach(entryKey => {
         enhanceEntries[entryKey] = [
             `webpack-dev-server/client?http://${serverHost}:${serverPort}`,
             `webpack/hot/only-dev-server`

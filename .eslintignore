@@ -1,8 +1,5 @@
-/**/bower_components/**
 /dist/**
-/coverage/**
-/prod/**
 /docs/**
-/tmp/**
-/dist-release/**
+/target/**
+/reports/**
 /node-modules/**

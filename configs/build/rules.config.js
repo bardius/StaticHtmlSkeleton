@@ -25,6 +25,7 @@ import {
 
 const argv = require("yargs").argv;
 const isProdModeOn = argv.p || false;
+const isdebugModeOn = (argv.env && argv.env.debug) || false;
 
 const webpackRules = [
     // HTML file loader
@@ -32,18 +33,25 @@ const webpackRules = [
         test: /\.(html)$/,
         use: {
             loader: "html-loader",
-            options: {}
+            options: {
+                minimize: false
+            }
         }
     },
     // Handlebars Assemble HBS to HTML file loader
     {
         test: /\.(hbs)$/,
         use: [
-            { loader: "html-loader" },
+            {
+                loader: "html-loader",
+                options: {
+                    minimize: false
+                }
+            },
             {
                 loader: path.resolve(assembleLoaderPath),
                 options: {
-                    hbsRootpath: `${srcPathAbsolute}views`,
+                    hbsRootPath: `${srcPathAbsolute}views`,
                     layouts: `${srcPathAbsolute}views/layouts/**/*.hbs`,
                     partials: `${srcPathAbsolute}views/partials/**/*.hbs`,
                     helpers: null,
@@ -59,7 +67,8 @@ const webpackRules = [
         exclude: new RegExp(`${nodeModulesPath}`),
         loader: "babel-loader",
         options: {
-            cacheDirectory: true
+            cacheDirectory: true,
+            cacheCompression: false
         }
     },
     // CSS with postCSS via loaders & extracted to file via mini CSS extract plugin
@@ -85,11 +94,12 @@ const webpackRules = [
                     }
                 }
             },
-            { loader: "resolve-url-loader" },
+            { loader: "resolve-url-loader", options: { debug: isdebugModeOn } },
             {
                 loader: "sass-loader",
                 options: {
                     sourceMap: true,
+                    sourceMapContents: false,
                     includePaths: [
                         path.resolve(__dirname, "node_modules/foundation-sites/scss"),
                         path.resolve(__dirname, "node_modules/motion-ui/src")

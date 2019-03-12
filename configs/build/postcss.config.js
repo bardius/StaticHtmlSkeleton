@@ -10,6 +10,7 @@ module.exports = {
     plugins: {
         "postcss-import": {},
         "postcss-url": { url: "rebase" },
+        precss: {},
         "postcss-custom-properties": {},
         "postcss-calc": {},
         "postcss-custom-media": {},
@@ -17,15 +18,9 @@ module.exports = {
             propList: ["font", "font-size", "padding*", "margin*"]
         },
         "postcss-preset-env": {
-            browsers: ["last 2 versions", "not ie < 9"],
-            autoprefixer: {
-                grid: true
-            },
-            stage: 2,
-            features: {
-                "nesting-rules": true
-            }
+            stage: 2
         },
+        autoprefixer: {},
         "postcss-filter-gradient": {},
         cssnano: isProdModeOn
             ? {

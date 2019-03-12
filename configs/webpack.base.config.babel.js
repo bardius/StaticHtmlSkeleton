@@ -2,17 +2,25 @@ import webpack from "webpack";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import SitemapPlugin from "sitemap-webpack-plugin";
+import WebpackPwaManifest from "webpack-pwa-manifest";
+import CspHtmlWebpackPlugin from "csp-html-webpack-plugin";
+import ImageminWebpack from "imagemin-webpack";
+import ScriptExtHtmlWebpackPlugin from "script-ext-html-webpack-plugin";
 import path from "path";
 import { distPath } from "./build/paths.config";
 import {
     aliases,
     staticViews,
-    foldersToClean,
+    cleanupConfig,
     copyFilesList,
     extractCSS,
     entrypoints,
     externalLibs,
     webpackProvides,
+    manifestConfig,
+    scriptLoadConfig,
+    cspConfig,
+    imageOptimizationConfig,
     webpackRules,
     sitemapPages
 } from "./build";
@@ -38,7 +46,7 @@ let webpackBaseConfig = {
         pathinfo: false,
         library: "SkeletonAppLib",
         libraryTarget: "window",
-        filename: "[name]/js/bundle.min.js",
+        filename: "[name]/js/bundle.[hash:6].min.js",
         chunkFilename: "[id].js",
         publicPath: "/",
         path: path.join(__dirname, `../${distPath}`)
@@ -48,16 +56,21 @@ let webpackBaseConfig = {
     },
     externals: externalLibs,
     plugins: [
-        new CleanWebpackPlugin(foldersToClean, { root: path.resolve(__dirname, "../"), watch: false }),
+        new CleanWebpackPlugin(cleanupConfig),
         new CopyWebpackPlugin(copyFilesList),
         new webpack.ProvidePlugin(webpackProvides),
         extractCSS,
-        new SitemapPlugin("http://www.domain.com", sitemapPages, { fileName: "sitemap.xml" })
+        new SitemapPlugin("http://www.domain.com", sitemapPages, { fileName: "sitemap.xml" }),
+        new CspHtmlWebpackPlugin(cspConfig.policy, cspConfig.optional),
+        new WebpackPwaManifest(manifestConfig),
+        new ImageminWebpack(imageOptimizationConfig)
     ]
 };
 
-staticViews.map(staticViewJHtmlPlugin => {
+staticViews.forEach(staticViewJHtmlPlugin => {
     webpackBaseConfig.plugins.unshift(staticViewJHtmlPlugin);
 });
+
+webpackBaseConfig.plugins.push(new ScriptExtHtmlWebpackPlugin(scriptLoadConfig));
 
 export default webpackBaseConfig;

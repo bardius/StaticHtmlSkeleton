@@ -24,10 +24,12 @@ let webpackDevServerConfig = {
     plugins: [new webpack.HotModuleReplacementPlugin()],
     devServer: {
         contentBase: path.resolve(__dirname, `../${distPath}`),
+        writeToDisk: true,
         watchContentBase: true,
         hot: false,
         progress: true,
         inline: false,
+        index: "index.html",
         stats: {
             colors: true,
             assets: false,
@@ -38,9 +40,11 @@ let webpackDevServerConfig = {
             chunkModules: false,
             chunkOrigins: true
         },
+        headers: {},
         https: false,
         host: serverHost,
         port: serverPort,
+        historyApiFallback: true,
         compress: true,
         open: false
     }

@@ -14,11 +14,20 @@
     "extends": [
         "airbnb-base",
         "plugin:promise/recommended",
+        "plugin:compat/recommended",
         "prettier"
     ],
     "rules": {
         "no-shadow": "off",
+        "no-plusplus": "off",
         "no-underscore-dangle": "off",
         "prettier/prettier": "error"
+    },
+    "settings": {
+        "import/resolver": {
+            "webpack": {
+                "config": "configs/webpack.base.config.babel.js"
+            }
+        }
     }
 }

@@ -4,29 +4,29 @@
 <aside class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
     <!-- Menu -->
     <ul class="vertical dropdown menu off-canvas-list" data-responsive-menu="drilldown large-dropdown">
-        <li {{#is basename "index"}} class="active"{{/is}}>
-            <a href="/index.html" title="Home">
-                <span>Home</span>
+        <li{{#is basename navigation.header.home.basename}} class="active"{{/is}}>
+            <a href="{{data navigation.header.home.url}}" title="{{data navigation.header.home.title}}">
+                <span>{{data navigation.header.home.title}}</span>
             </a>
         </li>
-        <li {{#is basename "styleguide"}} class="active"{{/is}}>
-            <a href="/styleguide.html" title="Styleguide">
-                <span>Styleguide</span>
+        <li{{#is basename navigation.header.styleguide.basename}} class="active"{{/is}}>
+            <a href="{{data navigation.header.styleguide.url}}" title="{{data navigation.header.styleguide.title}}">
+                <span>{{data navigation.header.styleguide.title}}</span>
             </a>
         </li>
-        <li class="has-submenu">
-            <a href="/sample1.html" title="Sample Page 1">
-                <span>Sample Page 1</span>
+        <li class="has-submenu{{#is basename navigation.header.sample1.basename}} active{{/is}}">
+            <a href="{{data navigation.header.sample1.url}}" title="{{data navigation.header.sample1.title}}">
+                <span>{{data navigation.header.sample1.title}}</span>
             </a>
             <ul class="menu submenu vertical" data-submenu>
-                <li>
-                    <a href="/sample2.html" title="Sample Page 2">
-                        <span>Sample Page 2</span>
+                <li{{#is basename navigation.header.sample2.basename}} class="active"{{/is}}>
+                    <a href="{{data navigation.header.sample2.url}}" title="{{data navigation.header.sample2.title}}">
+                        <span>{{data navigation.header.sample2.title}}</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/sample3.html" title="Sample Page 3">
-                        <span>Sample Page 3</span>
+                <li{{#is basename navigation.header.sample3.basename}} class="active"{{/is}}>
+                    <a href="{{data navigation.header.sample3.url}}" title="{{data navigation.header.sample3.title}}">
+                        <span>{{data navigation.header.sample3.title}}</span>
                     </a>
                 </li>
             </ul>

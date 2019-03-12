@@ -5,10 +5,14 @@ import validateOptions from "schema-utils";
 const assembleApp = assemble();
 const handlebarsHelpers = require("handlebars-helpers")();
 
+handlebarsHelpers.data = function(data) {
+    return JSON.parse(JSON.stringify(data));
+};
+
 const schema = {
     type: "object",
     properties: {
-        hbsRootpath: {
+        hbsRootPath: {
             type: "string"
         },
         layouts: {
@@ -35,7 +39,7 @@ const webpackAssembleLoader = function(content) {
     const options = loaderUtils.getOptions(this) || {};
     validateOptions(schema, options, "Webpack Assemble Loader");
 
-    if (!options.hbsRootpath) {
+    if (!options.hbsRootPath) {
         throw new Error("Root Path is required in the Assemble loader config");
     }
 
@@ -47,7 +51,7 @@ const webpackAssembleLoader = function(content) {
         throw new Error("Partials is required in the Assemble loader config");
     }
 
-    this.addContextDependency(options.hbsRootpath);
+    this.addContextDependency(options.hbsRootPath);
 
     assembleApp.layouts(options.layouts);
     assembleApp.partials(options.partials);

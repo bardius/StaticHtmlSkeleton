@@ -1,42 +1,21 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en-GB">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
-
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+        <meta http-equiv="Content-Security-Policy" content="">
 
         <title>{{ @root.title }} | {{ @root.siteName }}</title>
         <meta name="description" content="{{ @root.meta_description }} {{ @root.siteName }}">
         <meta name="keywords" content="{{ @root.meta_keywords }}">
 
-        <link rel="alternate" hreflang="en" href="{{ @root.siteURL }}{{ @root.pageURL }}" />
-        <link rel="canonical" href="{{ @root.siteURL }}{{ @root.pageURL }}" />
+        <link rel="alternate" hreflang="en" href="{{ @root.siteURL }}{{ @root.pageURL }}">
+        <link rel="canonical" href="{{ @root.siteURL }}{{ @root.pageURL }}">
 
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
-        <meta name="mobile-web-app-capable" content="yes">
-
-        <link rel="shortcut icon" href="/images/favicons/favicon.ico">
-
-        <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
-
-        <link rel="icon" type="image/png" href="/images/favicons/favicon-196x196.png" sizes="196x196">
-        <link rel="icon" type="image/png" href="/images/favicons/favicon-160x160.png" sizes="160x160">
-        <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
-        <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
-        <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{cssFilePath}}" />
+        <script>
+            document.getElementsByTagname("html")[0].classList.remove("no-js");
+        </script>
 
         <!--[if !IE]><!-->
         <script>
@@ -46,24 +25,26 @@
         </script>
         <!--<![endif]-->
 
-        <!--[if lt IE 9]>
-        <script src="/js/libs/polyfills/rem.min.js"></script>
-        <![endif]-->
-
         <!-- Twitter Cards -->
-        <meta name="twitter:site" content="@{{ @root.twitter_user }}" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="{{ @root.title }} | {{ @root.siteName }}" />
-        <meta name="twitter:description" content="{{ @root.twitter_description }}" />
-        <meta name="twitter:image:src" content="{{ @root.siteURL }}/images/favicons/logo_media.jpg" />
+        <meta name="twitter:site" content="@{{ @root.twitter_user }}">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="{{ @root.title }} | {{ @root.siteName }}">
+        <meta name="twitter:description" content="{{ @root.twitter_description }}">
+        <meta name="twitter:image:src" content="{{ @root.siteURL }}/images//logo.jpg">
 
         <!-- Facebook Opengraph -->
-        <meta property="og:title" content="{{ @root.title }} | {{ @root.siteName }}" />
+        <meta property="og:title" content="{{ @root.title }} | {{ @root.siteName }}">
         <meta property="og:site_name" content="{{ @root.siteName }}">
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="{{ @root.siteURL }}" />
-        <meta property="og:image" content="{{ @root.siteURL }}/images/favicons/logo_media.jpg" />
-        <meta property="og:description" content="{{ @root.fb_description }}" />
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ @root.siteURL }}">
+        <meta property="og:image" content="{{ @root.siteURL }}/images//logo.jpg">
+        <meta property="og:description" content="{{ @root.fb_description }}">
 
         <meta name="author" content="{{ @root.author }}">
+
+        {{#isTruthy @root.trackingConfig.enable}}
+            <link rel="preconnect" href="{{ @root.trackingConfig.scriptDomain }}" crossorigin>
+        {{/isTruthy}}
+
+        <link rel="preload" href="/assets/fonts/robotocondensed-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
     </head>

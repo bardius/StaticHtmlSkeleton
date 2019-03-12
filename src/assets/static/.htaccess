@@ -1,8 +1,8 @@
 # Set some environment variables depending on host
 SetEnv APPLICATION_ENV=default
 SetEnvIfNoCase Host domain\.dev APPLICATION_ENV=dev
-SetEnvIfNoCase Host domain.devdomain\.com APPLICATION_ENV=dev
-SetEnvIfNoCase Host domain.qadomain\.com APPLICATION_ENV=qa
+SetEnvIfNoCase Host domain\.devdomain\.com APPLICATION_ENV=dev
+SetEnvIfNoCase Host domain\.qadomain\.com APPLICATION_ENV=qa
 SetEnvIfNoCase Host domain\.com APPLICATION_ENV=live
 SetEnvIfNoCase Host www\.domain\.com APPLICATION_ENV=live
 

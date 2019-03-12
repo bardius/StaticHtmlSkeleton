@@ -1,4 +1,4 @@
-{{> html_start }}
+{{partial "html_start"}}
 
     <body>
         <div class="super-wrapper">
@@ -9,16 +9,15 @@
 
                         <div class="off-canvas-content" data-off-canvas-content>
 
-                            <!-- Add your site or application content here -->
-                            {{> masthead }}
+                            {{partial "masthead"}}
 
                             {% body %}
 
-                            {{> footer }}
+                            {{partial "footer"}}
 
                         </div>
 
-                        {{> off_canvas_nav }}
+                        {{partial "off_canvas_nav"}}
 
                     </div>
                 </div>
@@ -26,4 +25,4 @@
             </div>
         </div>
 
-{{> html_end }}
+{{partial "html_end"}}

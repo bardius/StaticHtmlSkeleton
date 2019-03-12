@@ -2,6 +2,7 @@ import glob from "glob";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import merge from "webpack-merge";
 import { srcPathAbsolute } from "./paths.config";
+import metaTagsConfig from "./metatags.config";
 
 /*
  All available options & documentation from:
@@ -10,14 +11,15 @@ import { srcPathAbsolute } from "./paths.config";
 const absoluteTemplatesPath = `${srcPathAbsolute}views/pages/`;
 const pluginConfigDefaults = {
     hash: false,
-    inject: true,
+    inject: "head",
     compile: true,
     favicon: `${srcPathAbsolute}assets/images/favicon.ico`,
     minify: false,
     cache: true,
     showErrors: true,
     chunks: "all",
-    xhtml: false
+    xhtml: false,
+    meta: metaTagsConfig
 };
 
 // Generate the configuration object for each Handlebars pages to use in each HtmlWebpackPlugin instance
@@ -51,7 +53,6 @@ const getHtmlWebpackPluginList = function(hbsTemplatesPath) {
 
     staticViewsConfigs.map(staticViewConfig => {
         const htmlWebpackPlugin = new HtmlWebpackPlugin(merge.smart(pluginConfigDefaults, staticViewConfig));
-
         htmlWebpackPluginArray.push(htmlWebpackPlugin);
     });
 
