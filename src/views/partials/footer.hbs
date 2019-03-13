@@ -6,17 +6,17 @@
 
         <div id="footer-nav" class="large-12 small-12 columns">
             <ul class="footer-menu vertical medium-horizontal align-center menu">
-                <li{{#is basename navigation.footer.home.basename}} class="active"{{/is}}>
+                <li{{#is @root.pageURL navigation.footer.home.url}} class="active"{{/is}}>
                     <a href="{{data navigation.footer.home.url}}" title="{{data navigation.footer.home.title}}">
                         <span>{{data navigation.footer.home.title}}</span>
                     </a>
                 </li>
-                <li{{#is basename navigation.footer.sitemap.basename}} class="active"{{/is}}>
+                <li{{#is @root.pageURL navigation.footer.sitemap.url}} class="active"{{/is}}>
                     <a href="{{data navigation.footer.sitemap.url}}" title="{{data navigation.footer.sitemap.title}}">
                         <span>{{data navigation.footer.sitemap.title}}</span>
                     </a>
                 </li>
-                <li{{#is basename navigation.footer.tnc.basename}} class="active"{{/is}}>
+                <li{{#is @root.pageURL navigation.footer.tnc.url}} class="active"{{/is}}>
                     <a href="{{data navigation.footer.tnc.url}}" title="{{data navigation.footer.tnc.title}}">
                         <span>{{data navigation.footer.tnc.title}}</span>
                     </a>

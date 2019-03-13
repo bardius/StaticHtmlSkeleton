@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en-GB">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-        <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
-        <meta http-equiv="Content-Security-Policy" content="">
-
         <title>{{ @root.title }} | {{ @root.siteName }}</title>
         <meta name="description" content="{{ @root.meta_description }} {{ @root.siteName }}">
         <meta name="keywords" content="{{ @root.meta_keywords }}">
@@ -14,7 +9,7 @@
         <link rel="canonical" href="{{ @root.siteURL }}{{ @root.pageURL }}">
 
         <script>
-            document.getElementsByTagname("html")[0].classList.remove("no-js");
+            document.getElementsByTagName("html")[0].classList.remove("no-js");
         </script>
 
         <!--[if !IE]><!-->
@@ -39,8 +34,6 @@
         <meta property="og:url" content="{{ @root.siteURL }}">
         <meta property="og:image" content="{{ @root.siteURL }}/images//logo.jpg">
         <meta property="og:description" content="{{ @root.fb_description }}">
-
-        <meta name="author" content="{{ @root.author }}">
 
         {{#isTruthy @root.trackingConfig.enable}}
             <link rel="preconnect" href="{{ @root.trackingConfig.scriptDomain }}" crossorigin>

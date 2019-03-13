@@ -13,12 +13,14 @@ const cspConfig = {
         "connect-src": ["*", "'unsafe-inline'"],
         "img-src": ["*", "data:", "blob:", "'unsafe-inline'"],
         "frame-src": ["*"],
-        "style-src": ["*", "data:", "blob:", "'unsafe-inline'"],
+        "style-src": ["*", "data:", "blob:", "'unsafe-inline'", "'unsafe-eval'"],
         "font-src": ["*", "data:", "blob:", "'unsafe-inline'"]
     },
     optional: {
+        enabled: true,
         devAllowUnsafe: false,
-        enabled: false,
+        nonceEnabled: { "script-src": true, "style-src": false },
+        hashEnabled: { "script-src": true, "style-src": false },
         hashingMethod: "sha512"
     }
 };

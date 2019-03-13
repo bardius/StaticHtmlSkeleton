@@ -62,7 +62,16 @@ const webpackAssembleLoader = function(content) {
 
     assembleApp.render("page.hbs", options.define || {}, (error, view) => {
         if (error) {
-            throw new Error(error.message);
+            if (
+                error.message === `Unexpected token u in JSON at position 0` &&
+                error.helper &&
+                error.helper.name === "partial"
+            ) {
+                error.message = `Reference to undefined data object key found at ${
+                    error.helper.args[0]
+                } or in partials included at ${error.helper.args[0]}`;
+            }
+            return callback(error);
         }
         callback(null, view.content);
     });
