@@ -1,7 +1,13 @@
 [![Build Status](https://travis-ci.org/bardius/StaticHtmlSkeleton.svg?branch=master)](https://travis-ci.org/bardius/StaticHtmlSkeleton)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=bardius_StaticHtmlSkeleton&metric=alert_status)](https://sonarcloud.io/dashboard/index/bardius_StaticHtmlSkeleton)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bardius_StaticHtmlSkeleton&metric=coverage)](https://sonarcloud.io/dashboard/index/bardius_StaticHtmlSkeleton)
+[![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=bardius_StaticHtmlSkeleton&metric=sqale_rating)](https://sonarcloud.io/dashboard/index/bardius_StaticHtmlSkeleton)
+[![Reliability](https://sonarcloud.io/api/project_badges/measure?project=bardius_StaticHtmlSkeleton&metric=reliability_rating)](https://sonarcloud.io/dashboard/index/bardius_StaticHtmlSkeleton)
+[![Security](https://sonarcloud.io/api/project_badges/measure?project=bardius_StaticHtmlSkeleton&metric=security_rating)](https://sonarcloud.io/dashboard/index/bardius_StaticHtmlSkeleton)
+[![Releases](https://img.shields.io/github/release/bardius/StaticHtmlSkeleton.svg)](https://github.com/bardius/StaticHtmlSkeleton/releases)
 ![](http://www.bardis.info/StaticHtmlSkeleton.png?)
 
-# Static HTML Project Generator distribution with integrated Zurb Foundation 6 (v6.5.1)
+# Static HTML Project Generator distribution with integrated Zurb Foundation 6 (v6.5.3)
 
 ## Table of contents
 

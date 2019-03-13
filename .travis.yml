@@ -1,4 +1,7 @@
-# .travis.yml
+# Using trusty because the Travis Addon for SonarQube.com requires Java 8
+dist: trusty
+sudo: required
+
 language: node_js
 
 node_js:
@@ -6,7 +9,7 @@ node_js:
     - 10.0
 
 matrix:
-    ? allow_failures
+    allow_failures:
 
 before_install:
     - node -v
@@ -15,10 +18,17 @@ before_install:
 install:
     - npm run setup
 
-? before_script
+before_script:
 
 script:
     - npm run test
     - npm run release
+    - npm run sonar
 
-? after_script
+after_script:
+
+cache:
+    directories:
+        - $HOME/.npm
+        - $HOME/.sonar/cache
+        - $HOME/.sonar/native-sonar-scanner

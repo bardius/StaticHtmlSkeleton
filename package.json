@@ -50,6 +50,7 @@
     "check:eslint": "eslint --print-config .eslintrc | eslint-config-prettier-check",
     "clean:image-cache": "rm -rf ./node_modules/.cache/imagemin-webpack",
     "pretty": "pretty-quick",
+    "sonar": "sonar-scanner",
     "pretty:stagged": "pretty-quick --staged",
     "postinstall": "npm-run-all check:node check:npm",
     "precommit": "npm-run-all pretty:stagged test"
@@ -152,6 +153,7 @@
     "script-loader": "^0.7.2",
     "semver": "^5.6.0",
     "sitemap-webpack-plugin": "^0.6.0",
+    "sonarqube-scanner": "^2.4.0",
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
     "stylelint-checkstyle-formatter": "^0.1.2",
