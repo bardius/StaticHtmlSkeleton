@@ -6,7 +6,7 @@ import path from "path";
  */
 const manifestConfig = {
     name: "PWA StaticHtmlSkeleton",
-    short_name: "StaticHtmlSkeleton",
+    short_name: "Skeleton",
     description: "PWA StaticHtmlSkeleton description",
     background_color: "#FFFFFF",
     fingerprints: false,
