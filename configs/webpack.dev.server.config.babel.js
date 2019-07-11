@@ -26,7 +26,7 @@ let webpackDevServerConfig = {
         contentBase: path.resolve(__dirname, `../${distPath}`),
         writeToDisk: true,
         watchContentBase: true,
-        hot: false,
+        hot: true,
         progress: true,
         inline: false,
         index: "index.html",

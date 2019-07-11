@@ -1,0 +1,9 @@
+const SAMPLE_DATA = "SAMPLE_DATA";
+const SAMPLE_DATA_2 = "SAMPLE_DATA_2";
+const SAMPLE_DATA_3 = "SAMPLE_DATA_3";
+
+export default {
+    SAMPLE_DATA,
+    SAMPLE_DATA_2,
+    SAMPLE_DATA_3
+};

@@ -16,6 +16,7 @@ import {
     extractCSS,
     entrypoints,
     externalLibs,
+    defineConfig,
     webpackProvides,
     manifestConfig,
     scriptLoadConfig,
@@ -38,7 +39,7 @@ let webpackBaseConfig = {
     context: path.resolve(__dirname, "../"),
     resolve: {
         modules: [path.resolve("./"), "node_modules"],
-        extensions: ["*", ".js", ".json", ".hbs", "css", "scss"],
+        extensions: ["*", ".js", ".jsx", ".json", ".hbs", "css", "scss"],
         alias: aliases
     },
     entry: entrypoints,
@@ -58,6 +59,7 @@ let webpackBaseConfig = {
     plugins: [
         new CleanWebpackPlugin(cleanupConfig),
         new CopyWebpackPlugin(copyFilesList),
+        new webpack.DefinePlugin(defineConfig),
         new webpack.ProvidePlugin(webpackProvides),
         extractCSS,
         new SitemapPlugin("http://www.domain.com", sitemapPages, { fileName: "sitemap.xml" }),

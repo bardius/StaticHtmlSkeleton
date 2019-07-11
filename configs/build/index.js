@@ -6,6 +6,7 @@ import cspConfig from "./csp.config";
 import extractCSS from "./css.extract.config";
 import entrypoints from "./entrypoints.config";
 import externalLibs from "./externals.config";
+import defineConfig from "./define.config";
 import imageOptimizationConfig from "./image.optimization.config";
 import manifestConfig from "./manifest.config";
 import metaTagsConfig from "./metatags.config";
@@ -24,6 +25,7 @@ export {
     extractCSS,
     entrypoints,
     externalLibs,
+    defineConfig,
     imageOptimizationConfig,
     manifestConfig,
     metaTagsConfig,

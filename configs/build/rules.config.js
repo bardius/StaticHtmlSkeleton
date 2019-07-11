@@ -63,13 +63,18 @@ const webpackRules = [
     },
     // JavaScript ES6 with Babel loader
     {
-        test: /\.(js)$/,
+        test: /\.(js|jsx)$/,
         exclude: new RegExp(`${nodeModulesPath}`),
         loader: "babel-loader",
         options: {
             cacheDirectory: true,
             cacheCompression: false
         }
+    },
+    {
+        test: /\.(json)$/,
+        exclude: new RegExp(`${nodeModulesPath}`),
+        loader: "json-loader"
     },
     // CSS with postCSS via loaders & extracted to file via mini CSS extract plugin
     {

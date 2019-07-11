@@ -12,13 +12,16 @@ const serverPort = (argv.env && argv.env.serverPort) || "9001";
 
 // Appending the webpack HMR and dev-server entries in the existing webpack entrypoints
 const enhanceEntriesWithHMR = entries => {
-    let enhanceEntries = {};
+    const enhanceEntries = {};
 
     Object.keys(entries).forEach(entryKey => {
-        enhanceEntries[entryKey] = [
-            `webpack-dev-server/client?http://${serverHost}:${serverPort}`,
-            `webpack/hot/only-dev-server`
-        ];
+        enhanceEntries[entryKey] = [];
+
+        if (entryKey.indexOf("spa/") > -1) {
+            enhanceEntries[entryKey].push(`react-hot-loader/patch`);
+        }
+        enhanceEntries[entryKey].push(`webpack-dev-server/client?http://${serverHost}:${serverPort}`);
+        enhanceEntries[entryKey].push(`webpack/hot/only-dev-server`);
     });
 
     return enhanceEntries;

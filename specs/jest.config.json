@@ -4,9 +4,9 @@
     "verbose": true,
     "collectCoverage": true,
     "coverageDirectory": "reports/unit-tests",
-    "coverageReporters": ["lcov", "text", "text-summary"],
+    "coverageReporters": ["json", "lcov", "text", "text-summary"],
     "collectCoverageFrom": ["src/js**/**", "!**/__mocks__/**", "!**/index.js"],
-    "coveragePathIgnorePatterns": ["/specs/", "/dist/"],
+    "coveragePathIgnorePatterns": ["/specs/", "/dist/", "<rootDir>/src/assets"],
     "coverageThreshold": {
         "global": {
             "branches": 0,
@@ -24,8 +24,8 @@
     },
     "testURL": "http://www.domain.local",
     "rootDir": "../",
-    "setupFilesAfterEnv": ["<rootDir>/specs/jest.pre-run.js"],
     "testEnvironment": "<rootDir>/specs/jest.environment.js",
-    "moduleFileExtensions": ["js"],
+    "setupFilesAfterEnv": ["<rootDir>/specs/jest.pre-run.js"],
+    "moduleFileExtensions": ["js", "jsx"],
     "testResultsProcessor": "jest-sonar-reporter"
 }
